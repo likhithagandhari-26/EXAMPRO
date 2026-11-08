@@ -1,0 +1,904 @@
+/* =========================================================
+   EXAM PRO — STUDENTS PAGE
+   Professional • Compact • Clean • Responsive
+========================================================= */
+
+
+/* =========================================================
+   PAGE VARIABLES
+========================================================= */
+
+:root {
+    --student-primary: #2563eb;
+    --student-primary-light: #eff6ff;
+
+    --student-success: #16a34a;
+    --student-success-light: #f0fdf4;
+
+    --student-warning: #ea580c;
+    --student-warning-light: #fff7ed;
+
+    --student-purple: #7c3aed;
+    --student-purple-light: #f5f3ff;
+
+    --student-danger: #dc2626;
+    --student-danger-light: #fef2f2;
+
+    --student-white: #ffffff;
+
+    --student-text: #0f172a;
+    --student-text-secondary: #475569;
+    --student-text-muted: #64748b;
+
+    --student-border: #e2e8f0;
+
+    --student-bg: #f8fafc;
+
+    --student-radius-sm: 8px;
+    --student-radius-md: 12px;
+    --student-radius-lg: 14px;
+
+    --student-shadow:
+        0 2px 8px rgba(15, 23, 42, 0.04);
+
+    --student-shadow-hover:
+        0 8px 22px rgba(15, 23, 42, 0.08);
+
+    --student-transition: 0.2s ease;
+}
+
+
+/* =========================================================
+   MAIN PAGE LAYOUT
+   IMPORTANT:
+   Sidebar + topbar layout is controlled by
+   commondashboard-design.css
+========================================================= */
+/* Students page */
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+/* =========================================================
+   HERO / PAGE HEADER
+========================================================= */
+
+.hero-card {
+    position: relative;
+
+    width: 100%;
+
+    background: var(--student-white);
+
+    border: 1px solid var(--student-border);
+
+    border-radius: var(--student-radius-lg);
+
+    padding: 20px 22px;
+
+    box-shadow: var(--student-shadow);
+
+    overflow: hidden;
+
+    transition:
+        box-shadow var(--student-transition),
+        border-color var(--student-transition);
+}
+
+.hero-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 4px;
+
+    background: var(--student-primary);
+}
+
+.hero-card:hover {
+    border-color: #d7e1ef;
+
+    box-shadow: var(--student-shadow-hover);
+}
+
+.hero-text {
+    padding-left: 5px;
+}
+
+.hero-text h2 {
+    margin: 0 0 5px;
+
+    color: var(--student-text);
+
+    font-size: 1.55rem;
+    font-weight: 700;
+
+    line-height: 1.3;
+}
+
+.hero-text p {
+    max-width: 850px;
+
+    margin: 0;
+
+    color: var(--student-text-muted);
+
+    font-size: 0.86rem;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   STATISTICS GRID
+========================================================= */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 14px;
+
+    width: 100%;
+}
+
+.stat-card {
+    position: relative;
+
+    background: var(--student-white);
+
+    border: 1px solid var(--student-border);
+
+    border-radius: var(--student-radius-lg);
+
+    padding: 16px;
+
+    box-shadow: var(--student-shadow);
+
+    transition:
+        transform var(--student-transition),
+        box-shadow var(--student-transition),
+        border-color var(--student-transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+
+    border-color: #d7e1ef;
+
+    box-shadow: var(--student-shadow-hover);
+}
+
+.stat-top {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.stat-icon {
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    font-size: 1rem;
+}
+
+.stat-icon.blue {
+    background: var(--student-primary-light);
+    color: var(--student-primary);
+}
+
+.stat-icon.green {
+    background: var(--student-success-light);
+    color: var(--student-success);
+}
+
+.stat-icon.orange {
+    background: var(--student-warning-light);
+    color: var(--student-warning);
+}
+
+.stat-icon.purple {
+    background: var(--student-purple-light);
+    color: var(--student-purple);
+}
+
+.stat-card h2 {
+    margin: 0;
+
+    color: var(--student-text);
+
+    font-size: 1.45rem;
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+.stat-card p {
+    margin: 3px 0 0;
+
+    color: var(--student-text-muted);
+
+    font-size: 0.76rem;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   COMMON PANELS
+========================================================= */
+
+.panel {
+    width: 100%;
+
+    background: var(--student-white);
+
+    border: 1px solid var(--student-border);
+
+    border-radius: var(--student-radius-lg);
+
+    padding: 18px;
+
+    box-shadow: var(--student-shadow);
+
+    transition:
+        box-shadow var(--student-transition),
+        border-color var(--student-transition);
+}
+
+.panel:hover {
+    border-color: #dbe4f0;
+
+    box-shadow:
+        0 4px 14px rgba(15, 23, 42, 0.055);
+}
+
+
+/* =========================================================
+   PANEL HEADER
+========================================================= */
+
+.panel-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 14px;
+}
+
+.panel-header h3 {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 0;
+
+    color: var(--student-text);
+
+    font-size: 0.96rem;
+
+    font-weight: 650;
+}
+
+.panel-header h3 i {
+    color: var(--student-primary);
+
+    font-size: 0.88rem;
+}
+
+.panel-header a {
+    color: var(--student-primary);
+
+    font-size: 0.78rem;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.panel-header a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   SEARCH SECTION
+========================================================= */
+
+.search-bar {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.search-bar input,
+.search-bar select {
+    height: 40px;
+
+    background: var(--student-white);
+
+    border: 1px solid var(--student-border);
+
+    border-radius: var(--student-radius-md);
+
+    outline: none;
+
+    color: var(--student-text);
+
+    font-size: 0.82rem;
+
+    transition:
+        border-color var(--student-transition),
+        box-shadow var(--student-transition);
+}
+
+.search-bar input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 0 13px;
+}
+
+.search-bar input::placeholder {
+    color: #94a3b8;
+}
+
+.search-bar select {
+    width: 190px;
+
+    padding: 0 12px;
+
+    cursor: pointer;
+}
+
+.search-bar input:focus,
+.search-bar select:focus {
+    border-color: var(--student-primary);
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+
+/* =========================================================
+   STUDENTS TABLE
+========================================================= */
+
+.table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid var(--student-border);
+
+    border-radius: var(--student-radius-md);
+
+    background: var(--student-white);
+}
+
+.exam-table {
+    width: 100%;
+
+    min-width: 820px;
+
+    border-collapse: collapse;
+
+    background: var(--student-white);
+}
+
+.exam-table thead {
+    background: #f8fafc;
+}
+
+.exam-table th {
+    padding: 11px 13px;
+
+    text-align: left;
+
+    color: var(--student-text-secondary);
+
+    font-size: 0.72rem;
+
+    font-weight: 650;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.025em;
+
+    white-space: nowrap;
+
+    border-bottom: 1px solid var(--student-border);
+}
+
+.exam-table td {
+    padding: 12px 13px;
+
+    color: var(--student-text-secondary);
+
+    font-size: 0.78rem;
+
+    border-bottom: 1px solid #eef2f7;
+
+    vertical-align: middle;
+}
+
+.exam-table tbody tr {
+    transition: background var(--student-transition);
+}
+
+.exam-table tbody tr:hover {
+    background: #f8fbff;
+}
+
+.exam-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   STUDENT INFORMATION
+========================================================= */
+
+.student-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.student-avatar {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--student-primary-light);
+
+    color: var(--student-primary);
+
+    font-size: 0.72rem;
+
+    font-weight: 700;
+}
+
+.student-name {
+    color: var(--student-text);
+
+    font-size: 0.8rem;
+
+    font-weight: 600;
+}
+
+.student-email {
+    color: var(--student-text-muted);
+
+    font-size: 0.7rem;
+}
+
+
+/* =========================================================
+   SCORE STYLING
+========================================================= */
+
+.score-high {
+    color: var(--student-success);
+
+    font-weight: 700;
+}
+
+.score-medium {
+    color: var(--student-warning);
+
+    font-weight: 700;
+}
+
+.score-low {
+    color: var(--student-danger);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.status-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px 8px;
+
+    border-radius: 999px;
+
+    font-size: 0.68rem;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.status-active {
+    background: var(--student-success-light);
+
+    color: var(--student-success);
+}
+
+.status-inactive {
+    background: #f1f5f9;
+
+    color: var(--student-text-muted);
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.action-group {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+.action-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    min-height: 30px;
+
+    padding: 5px 9px;
+
+    border: 1px solid transparent;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 0.7rem;
+
+    font-weight: 600;
+
+    transition:
+        background var(--student-transition),
+        color var(--student-transition),
+        border-color var(--student-transition),
+        transform var(--student-transition);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+}
+
+.view-btn {
+    background: var(--student-primary-light);
+
+    color: var(--student-primary);
+
+    border-color: #dbeafe;
+}
+
+.view-btn:hover {
+    background: var(--student-primary);
+
+    color: var(--student-white);
+}
+
+.delete-btn {
+    background: var(--student-danger-light);
+
+    color: var(--student-danger);
+
+    border-color: #fee2e2;
+}
+
+.delete-btn:hover {
+    background: var(--student-danger);
+
+    color: var(--student-white);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-row:hover {
+    background: transparent !important;
+}
+
+.empty-state {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 38px 20px;
+
+    text-align: center;
+}
+
+.empty-state i {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 10px;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #94a3b8;
+
+    font-size: 1.25rem;
+}
+
+.empty-state p {
+    margin: 0 0 4px;
+
+    color: var(--student-text);
+
+    font-size: 0.85rem;
+
+    font-weight: 650;
+}
+
+.empty-state span {
+    color: var(--student-text-muted);
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   PERFORMANCE SUMMARY
+   TOP PERFORMER + BEST SCORE SIDE BY SIDE
+========================================================= */
+
+.summary-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+.summary-grid .panel {
+    min-width: 0;
+
+    min-height: 118px;
+
+    padding: 16px 18px;
+}
+
+.summary-content {
+    min-height: 62px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.summary-content h2 {
+    margin: 0 0 4px;
+
+    color: var(--student-primary);
+
+    font-size: 1.5rem;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+.summary-content p {
+    margin: 0;
+
+    color: var(--student-text-muted);
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   TABLE SCROLLBAR
+========================================================= */
+
+.table-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f8fafc;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+
+    border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-card {
+        padding: 18px 20px;
+    }
+
+    .hero-text h2 {
+        font-size: 1.4rem;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .main-content {
+        gap: 14px;
+    }
+
+    .hero-card {
+        padding: 16px 18px;
+    }
+
+    .hero-text h2 {
+        font-size: 1.3rem;
+    }
+
+    .hero-text p {
+        font-size: 0.8rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 14px;
+    }
+
+    .panel {
+        padding: 14px;
+    }
+
+    .panel-header {
+        margin-bottom: 12px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .search-bar input,
+    .search-bar select {
+        width: 100%;
+    }
+
+    /*
+       Keep the two summary cards side-by-side
+       on normal desktop/tablet.
+       Stack only on mobile.
+    */
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .table-wrapper {
+        border-radius: 10px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .hero-text h2 {
+        font-size: 1.2rem;
+    }
+
+    .stat-top {
+        gap: 10px;
+    }
+
+    .stat-icon {
+        width: 42px;
+        height: 42px;
+
+        flex-basis: 42px;
+    }
+
+    .stat-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .panel-header h3 {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Admin Dashboard | Exam Pro</title>
+
+        <link rel="stylesheet" href="css/commondashboard-design.css" />
+        <link rel="stylesheet" href="css/admin-dashboard.css" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <div class="dashboard-container">
+            <!-- ==================================
+             SIDEBAR
+            =================================== -->
+
+            <aside class="sidebar" id="sidebar">
+                <div>
+                    <div class="logo">
+                        <h1>EXAM PRO</h1>
+                        <p>Secure • Smart • Reliable</p>
+                    </div>
+
+                    <nav class="sidebar-menu">
+                        <ul>
+                            <li class="active">
+                                <a href="admin-dashboard.html">
+                                    <i class="fa-solid fa-table-columns"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Students.html">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>Students</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="create-exam.html">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                    <span>Create Exams</span>
+                                </a>
+                            </li>
+
+                            <li>
+                            <a href="manage-exams.html">
+                                <i class="fa-solid fa-list-check"></i>
+                                <span>Manage Exams</span>
+                            </a>
+                            </li>
+
+                            <li>
+                            <a href="question-manager.html">
+                                <i class="fa-solid fa-list-check"></i>
+                                <span>Question Manager</span>
+                            </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-question-bank.html">
+                                    <i class="fa-solid fa-book"></i>
+                                    <span>Question Bank</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-schedule.html">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <span>Schedule</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-monitoring.html">
+                                    <i class="fa-solid fa-video"></i>
+                                    <span>Live Monitoring</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-results.html">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Results</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-analytics.html">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                    <span>Analytics</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-reports.html">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>Reports</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-settings.html">
+                                    <i class="fa-solid fa-gear"></i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="ai-card">
+                        <div class="ai-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+
+                        <h3>AI Proctoring</h3>
+
+                        <p>Live monitoring and fraud detection active across all examinations.</p>
+
+                        <a href="#"> View Details → </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-footer">
+                    <a href="#" id="logoutBtn">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- ==================================
+             MAIN CONTENT
+        =================================== -->
+
+            <main class="main-content">
+                <!-- TOPBAR -->
+
+                <div class="topbar">
+                    <div class="menu-btn" id="menuToggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+
+                    <div class="top-right">
+                        <div class="notification">
+                            <i class="fa-regular fa-bell"></i>
+
+                            <span>0</span>
+                        </div>
+
+                        <div class="profile">
+                            <div class="profile-avatar">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+
+                            <div class="profile-info">
+                                <h4>Administrator</h4>
+                                <p>Super Admin</p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================
+             ADMIN HERO
+            ================================== -->
+
+                <section class="hero-card">
+                    <div class="hero-text">
+                        <h2>
+                            Welcome Back,
+                            <span id="adminName">Administrator</span> 👋
+                        </h2>
+
+                        <p>
+                            Create examinations, monitor candidates, analyze performance, and manage the entire
+                            examination lifecycle from one centralized dashboard.
+                        </p>
+
+                        <div class="hero-buttons">
+                            <a href="create-exam.html" class="primary-btn">
+                                <i class="fa-solid fa-plus"></i>
+                                Create Exam
+                            </a>
+
+                            <a href="admin-monitoring.html" class="outline-btn">
+                                <i class="fa-solid fa-video"></i>
+                                Live Monitoring
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-image">
+                        <img src="images/auth-laptop.png" alt="Admin Dashboard" />
+                    </div>
+                </section>
+
+                <!-- ==================================
+   PLATFORM STATS
+================================== -->
+
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon blue">
+                                <i class="fa-solid fa-file-circle-plus"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="totalExams" class="stat-number">0</h2>
+                                <p class="stat-title">Total Exams</p>
+                            </div>
+                        </div>
+
+                        <a href="admin-exams.html" class="stat-link"> Manage → </a>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon green">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="totalStudents" class="stat-number">0</h2>
+                                <p class="stat-title">Students</p>
+                            </div>
+                        </div>
+
+                        <a href="admin-students.html" class="stat-link"> View → </a>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon orange">
+                                <i class="fa-solid fa-camera"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="activeSessions" class="stat-number">0</h2>
+                                <p class="stat-title">Live Sessions</p>
+                            </div>
+                        </div>
+
+                        <a href="admin-monitoring.html" class="stat-link"> Monitor → </a>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon purple">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="avgScore" class="stat-number">0%</h2>
+                                <p class="stat-title">Average Score</p>
+                            </div>
+                        </div>
+
+                        <a href="admin-results.html" class="stat-link"> Analytics → </a>
+                    </div>
+                </section>
+
+                <!-- ==================================
+   LOWER GRID
+================================== -->
+
+                <section class="lower-grid">
+                    <!-- RECENT EXAMS -->
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3>
+                                <i class="fa-solid fa-file-lines"></i>
+                                Recent Examinations
+                            </h3>
+
+                            <a href="admin-exams.html"> View All </a>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table class="exam-table">
+                                <thead>
+                                    <tr>
+                                        <th>Exam Name</th>
+                                        <th>Date</th>
+                                        <th>Students</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="examTableBody">
+                                    <tr class="empty-row">
+                                        <td colspan="5">
+                                            <div class="empty-state">
+                                                <i class="fa-solid fa-file-circle-plus"></i>
+
+                                                <p>No Exams Created</p>
+
+                                                <span> Newly created exams will appear here. </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN -->
+
+                    <div class="right-column">
+                        <!-- RECENT ACTIVITY -->
+
+                        <div class="panel">
+                            <div class="panel-header">
+                                <h3>Recent Activity</h3>
+                            </div>
+
+                            <div id="activityContainer">
+                                <div class="activity-item">
+                                    <div class="activity-left">
+                                        <div class="activity-icon blue">
+                                            <i class="fa-solid fa-user-plus"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>New Student Registered</strong>
+                                            <p>Student joined platform</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECURITY ALERTS -->
+
+                        <div class="panel">
+                            <div class="panel-header">
+                                <h3>Security Alerts</h3>
+                            </div>
+
+                            <div id="securityContainer">
+                                <div class="activity-item">
+                                    <div class="activity-left">
+                                        <div class="activity-icon orange">
+                                            <i class="fa-solid fa-triangle-exclamation"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>No Active Alerts</strong>
+                                            <p>AI monitoring system running normally</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==================================
+   ANALYTICS PANEL
+================================== -->
+
+                <section class="panel performance">
+                    <div class="panel-header">
+                        <h3>Performance Analytics</h3>
+
+                        <a href="admin-results.html"> Detailed Reports </a>
+                    </div>
+
+                    <canvas id="analyticsChart"></canvas>
+                </section>
+
+                <!-- ==================================
+   QUICK ACTIONS
+================================== -->
+
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon blue">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+
+                            <div>
+                                <h3>Create Exam</h3>
+                                <p class="stat-title">Setup new examination</p>
+                            </div>
+                        </div>
+
+                        <a href="create-exam.html" class="stat-link"> Open → </a>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon green">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+
+                            <div>
+                                <h3>Manage Students</h3>
+                                <p class="stat-title">View student accounts</p>
+                            </div>
+                        </div>
+
+                        <a href="admin-students.html" class="stat-link"> Open → </a>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon orange">
+                                <i class="fa-solid fa-video"></i>
+                            </div>
+
+                            <div>
+                                <h3>AI Monitoring</h3>
+                                <p class="stat-title">Live exam supervision</p>
+                            </div>
+                        </div>
+
+                        <a href="admin-monitoring.html" class="stat-link"> Open → </a>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon purple">
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+
+                            <div>
+                                <h3>Reports</h3>
+                                <p class="stat-title">Results & analytics</p>
+                            </div>
+                        </div>
+
+                        <a href="admin-results.html" class="stat-link"> Open → </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="js/admin-dashboard.js"></script>
+    </body>
+</html>

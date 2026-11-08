@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Students | Exam Pro</title>
+        <link rel="stylesheet" href="css/commondashboard-design.css" />
+        <link rel="stylesheet" href="css/student.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="dashboard-container">
+            <!-- ==================================
+             SIDEBAR
+            =================================== -->
+            <aside class="sidebar" id="sidebar">
+                <div>
+                    <div class="logo">
+                        <h1>EXAM PRO</h1>
+                        <p>Secure • Smart • Reliable</p>
+                    </div>
+                    <nav class="sidebar-menu">
+                        <ul>
+                            <li>
+                                <a href="admin-dashboard.html">
+                                    <i class="fa-solid fa-table-columns"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li class="active">
+                                <a href="Students.html">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>Students</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="create-exam.html">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                    <span>Create Exams</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="manage-exams.html">
+                                    <i class="fa-solid fa-list-check"></i>
+                                    <span>Manage Exams</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="question-manager.html">
+                                    <i class="fa-solid fa-list-check"></i>
+                                    <span>Question Manager</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-question-bank.html">
+                                    <i class="fa-solid fa-book"></i>
+                                    <span>Question Bank</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-schedule.html">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <span>Schedule</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-monitoring.html">
+                                    <i class="fa-solid fa-video"></i>
+                                    <span>Live Monitoring</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-results.html">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Results</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-analytics.html">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                    <span>Analytics</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-reports.html">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>Reports</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-settings.html">
+                                    <i class="fa-solid fa-gear"></i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="ai-card">
+                        <div class="ai-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+
+                        <h3>AI Proctoring</h3>
+
+                        <p>Live monitoring and fraud detection active across all examinations.</p>
+
+                        <a href="#"> View Details → </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-footer">
+                    <a href="#" id="logoutBtn">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- ==================================
+             MAIN CONTENT
+        =================================== -->
+
+            <main class="main-content">
+                <!-- TOPBAR -->
+
+                <div class="topbar">
+                    <div class="menu-btn" id="menuToggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+
+                    <div class="top-right">
+                        <div class="notification">
+                            <i class="fa-regular fa-bell"></i>
+
+                            <span>0</span>
+                        </div>
+
+                        <div class="profile">
+                            <div class="profile-avatar">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+
+                            <div class="profile-info">
+                                <h4>Administrator</h4>
+                                <p>Super Admin</p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================
+             ADMIN HERO
+            ================================== -->
+
+                <section class="hero-card">
+                    <div class="hero-text">
+                        <span class="section-label"> Student Management </span>
+
+                        <h2>Registered Students</h2>
+
+                        <p>
+                            Monitor student registrations, track examination participation, review academic performance,
+                            and oversee student activity across the platform.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ==================================
+    SEARCH & FILTERS
+================================== -->
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <h3>
+                                <i class="fa-solid fa-users"></i>
+                                Registered Students
+                            </h3>
+
+                            <p class="panel-description">Search, filter, and manage student accounts.</p>
+                        </div>
+                    </div>
+
+                    <div class="students-filters">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input type="text" id="studentSearch" placeholder="Search by name, email, or student ID" />
+                        </div>
+                        <select id="activityFilter">
+                            <option value="">All Students</option>
+                            <option value="Attempted">Attempted Exam</option>
+                            <option value="NotAttempted">Not Attempted</option>
+                        </select>
+
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+
+                            <option value="Active">Active</option>
+
+                            <option value="Inactive">Inactive</option>
+                        </select>
+
+                        <button class="primary-btn" id="filterBtn">
+                            <i class="fa-solid fa-filter"></i>
+                            Apply Filters
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ==================================
+    STUDENTS TABLE
+================================== -->
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <h3>
+                                <i class="fa-solid fa-user-graduate"></i>
+                                Student Directory
+                            </h3>
+
+                            <p class="panel-description">
+                                Monitor registrations, participation, and student performance.
+                            </p>
+                        </div>
+
+                        <div class="table-actions">
+                            <button class="outline-btn">
+                                <i class="fa-solid fa-download"></i>
+
+                                Export
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="exam-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+
+                                    <th>Student ID</th>
+
+                                    <th>Email</th>
+
+                                    <th>Exams Attempted</th>
+
+                                    <th>Avg. Score</th>
+
+                                    <th>Status</th>
+
+                                    <th>Last Activity</th>
+
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="studentsTableBody">
+                                <tr class="empty-row">
+                                    <td colspan="8">
+                                        <div class="empty-state">
+                                            <i class="fa-solid fa-user-graduate"></i>
+
+                                            <h4>No Students Found</h4>
+
+                                            <p>Registered student accounts will appear here.</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <!-- ==================================
+    LOWER GRID
+================================== -->
+
+                <section class="lower-grid">
+                    <!-- ==================================
+         RECENT ACTIVITY
+    ================================== -->
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>
+                                    <i class="fa-solid fa-clock-rotate-left"></i>
+                                    Recent Activity
+                                </h3>
+
+                                <p class="panel-description">
+                                    Latest student registrations, exam attempts, and account activities.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="activityContainer">
+                            <div class="empty-state">
+                                <i class="fa-solid fa-clock"></i>
+
+                                <h4>No Recent Activity</h4>
+
+                                <p>
+                                    Student activities will appear here once users begin interacting with the platform.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==================================
+         PERFORMANCE ANALYTICS
+    ================================== -->
+
+                    <div class="panel performance">
+                        <div class="panel-header">
+                            <div>
+                                <h3>
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    Performance Analytics
+                                </h3>
+
+                                <p class="panel-description">
+                                    Overview of student performance and examination results.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="studentsChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==================================
+    AI PROCTORING INSIGHTS
+================================== -->
+
+                <section class="stats-grid">
+                    <!-- TOTAL STUDENTS -->
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon blue">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="totalStudents">0</h2>
+                                <p class="stat-title">Total Students</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ACTIVE STUDENTS -->
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon green">
+                                <i class="fa-solid fa-user-check"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="activeStudents">0</h2>
+                                <p class="stat-title">Active Students</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EXAM PARTICIPATION -->
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon orange">
+                                <i class="fa-solid fa-file-signature"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="examParticipation">0%</h2>
+                                <p class="stat-title">Exam Participation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AVERAGE SCORE -->
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon purple">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="averageScore">0%</h2>
+                                <p class="stat-title">Average Score</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script src="js/student.js"></script>
+            </main>
+        </div>
+    </body>
+</html>

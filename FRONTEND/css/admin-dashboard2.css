@@ -1,0 +1,238 @@
+/* ==========================================
+   ADMIN DASHBOARD
+========================================== */
+
+/* ==========================================
+   ANALYTICS CHART
+========================================== */
+
+#analyticsChart{
+    width:100%;
+    height:280px;
+}
+
+/* ==========================================
+   QUICK ACTIONS
+========================================== */
+
+.quick-actions{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.action-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:12px;
+
+    background:#f8fafc;
+
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+
+    font-size:13px;
+    font-weight:500;
+
+    transition:var(--transition);
+}
+
+.action-item:hover{
+    background:var(--primary-light);
+    border-color:#bfdbfe;
+    color:var(--primary);
+
+    transform:translateY(-2px);
+}
+
+.action-item i{
+    width:20px;
+
+    color:var(--primary);
+
+    font-size:14px;
+}
+
+/* ==========================================
+   ADMIN TABLE ACTIONS
+========================================== */
+
+.exam-table td:last-child{
+    white-space:nowrap;
+}
+
+.exam-table .details-btn{
+    margin-right:4px;
+}
+
+.exam-table .details-btn:last-child{
+    margin-right:0;
+}
+
+/* Edit Button */
+
+.edit-btn{
+    border-color:#bfdbfe;
+    color:#2563eb;
+}
+
+.edit-btn:hover{
+    background:#eff6ff;
+}
+
+/* Delete Button */
+
+.delete-btn{
+    border-color:#fecaca;
+    color:#dc2626;
+}
+
+.delete-btn:hover{
+    background:#fef2f2;
+}
+
+/* ==========================================
+   ACTIVITY CARD
+========================================== */
+
+.activity-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    margin-bottom:12px;
+}
+
+.activity-item:last-child{
+    margin-bottom:0;
+}
+
+.activity-left{
+    display:flex;
+    gap:10px;
+}
+
+.activity-left h4{
+    font-size:12px;
+    margin-bottom:2px;
+}
+
+.activity-left p{
+    font-size:11px;
+    color:var(--text-light);
+}
+
+.activity-time{
+    font-size:10px;
+    color:var(--text-light);
+}
+
+/* ==========================================
+   ADMIN PANEL SPACING
+========================================== */
+
+.lower-grid{
+    margin-bottom:10px;
+}
+
+/* ==========================================
+   TABLE STATUS COLORS
+========================================== */
+
+.status.active{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.status.scheduled{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.status.draft{
+    background:#fef3c7;
+    color:#b45309;
+}
+
+/* ==========================================
+   CHART PANEL
+========================================== */
+
+.analytics-panel{
+    min-height:330px;
+}
+
+.analytics-panel canvas{
+    margin-top:10px;
+}
+
+/* ==========================================
+   QUICK STATS ANIMATION
+========================================== */
+
+.stat-card{
+    position:relative;
+    overflow:hidden;
+}
+
+.stat-card::after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:3px;
+
+    background:var(--primary);
+
+    opacity:0;
+
+    transition:.3s;
+}
+
+.stat-card:hover::after{
+    opacity:1;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1024px){
+
+    .quick-actions{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    #analyticsChart{
+        height:240px;
+    }
+}
+
+@media(max-width:768px){
+
+    .quick-actions{
+        grid-template-columns:1fr;
+    }
+
+    .action-item{
+        padding:10px;
+        font-size:12px;
+    }
+
+    #analyticsChart{
+        height:220px;
+    }
+
+    .activity-item{
+        flex-direction:column;
+        gap:6px;
+    }
+}

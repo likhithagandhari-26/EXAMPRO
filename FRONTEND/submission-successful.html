@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+
+        <title>Submission Successful | Exam Pro</title>
+
+        <link rel="stylesheet" href="css/commondashboard-design.css" />
+
+        <link rel="stylesheet" href="css/submission-successful.css" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        />
+    </head>
+
+    <body>
+        <div class="dashboard-container">
+            <main class="main-content submission-page">
+                <!-- SUCCESS HERO -->
+
+                <section class="success-hero">
+                    <div class="success-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+
+                    <div class="success-badge">
+                        Exam Submitted Successfully
+                    </div>
+
+                    <h1>Thank You!</h1>
+
+                    <p class="hero-description">
+                        Your responses have been securely recorded and
+                        submitted to the examination system.
+                    </p>
+
+                    <div class="submission-reference">
+                        <span>Submission Reference</span>
+
+                        <strong id="submissionReference">
+                            REF-000000
+                        </strong>
+                    </div>
+                </section>
+
+                <!-- SUMMARY CARD -->
+
+                <section class="summary-card">
+                    <div class="card-header">
+                        <div>
+                            <h2>Exam Summary</h2>
+
+                            <p>
+                                Details of your completed examination
+                            </p>
+                        </div>
+
+                        <div class="submitted-status">
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Submitted
+                        </div>
+                    </div>
+
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <span>Exam Name</span>
+
+                            <strong id="examTitle">
+                                Loading...
+                            </strong>
+                        </div>
+
+                        <div class="summary-item">
+                            <span>Exam ID</span>
+
+                            <strong id="examId">
+                                --
+                            </strong>
+                        </div>
+
+                        <div class="summary-item">
+                            <span>Total Questions</span>
+
+                            <strong id="totalQuestions">
+                                --
+                            </strong>
+                        </div>
+
+                        <div class="summary-item">
+                            <span>Answered</span>
+
+                            <strong id="answeredQuestions">
+                                --
+                            </strong>
+                        </div>
+
+                        <div class="summary-item">
+                            <span>Duration</span>
+
+                            <strong id="examDuration">
+                                --
+                            </strong>
+                        </div>
+
+                        <div class="summary-item">
+                            <span>Submission Time</span>
+
+                            <strong id="submissionTime">
+                                --
+                            </strong>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STATUS CARD -->
+
+                <section class="status-card">
+                    <div class="status-icon">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
+
+                    <div class="status-content">
+                        <h3>Response Successfully Recorded</h3>
+
+                        <p>
+                            All answers have been securely stored in
+                            the Exam Pro system. Results will become
+                            available once published by the examiner.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- NEXT STEPS -->
+
+                <section class="next-steps-card">
+                    <h3>
+                        <i class="fa-solid fa-list-check"></i>
+                        What Happens Next?
+                    </h3>
+
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+
+                            <div>
+                                <h4>Evaluation</h4>
+
+                                <p>
+                                    Responses are processed and
+                                    evaluated.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+
+                            <div>
+                                <h4>Result Publication</h4>
+
+                                <p>
+                                    Results will be published by the
+                                    administrator.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+
+                            <div>
+                                <h4>View Performance</h4>
+
+                                <p>
+                                    Check your score, rank and detailed
+                                    analytics.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ACTIONS -->
+
+                <section class="action-section">
+                    <button
+                        id="dashboardBtn"
+                        class="btn-secondary"
+                    >
+                        <i class="fa-solid fa-house"></i>
+
+                        Dashboard
+                    </button>
+
+                    <button
+                        id="myExamsBtn"
+                        class="btn-primary"
+                    >
+                        <i class="fa-solid fa-file-lines"></i>
+
+                        My Exams
+                    </button>
+
+                    <button
+                        id="resultsBtn"
+                        class="btn-outline"
+                    >
+                        <i class="fa-solid fa-chart-column"></i>
+
+                        Results
+                    </button>
+                </section>
+
+                <!-- FOOTER NOTE -->
+
+                <section class="footer-note">
+                    <i class="fa-solid fa-lock"></i>
+
+                    <span>
+                        Your submission is encrypted and securely
+                        stored in Exam Pro.
+                    </span>
+                </section>
+            </main>
+        </div>
+
+        <script src="js/submission-successful.js"></script>
+    </body>
+</html>

@@ -1,0 +1,194 @@
+
+
+/* ====================================
+   FEATURES GRID
+==================================== */
+
+.features-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:12px;
+    margin-top:25px;
+    margin-bottom:35px;
+}
+
+/* ====================================
+   FEATURE CARD
+==================================== */
+
+.feature-box{
+    background:#ffffff;
+
+    padding:16px 14px;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    border:1px solid #edf2ff;
+
+    box-shadow:
+    0 3px 10px rgba(0,0,0,.04);
+
+    transition:all .3s ease;
+}
+
+.feature-box:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 8px 18px rgba(37,99,235,.10);
+}
+
+/* ====================================
+   FEATURE ICON
+==================================== */
+
+.feature-box .icon{
+    width:42px;
+    height:42px;
+
+    margin:0 auto 10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:#eff6ff;
+    color:#2563eb;
+
+    font-size:16px;
+}
+
+.feature-box h3{
+    font-size:14px;
+    font-weight:600;
+
+    color:#0f172a;
+
+    margin-bottom:5px;
+}
+
+.feature-box p{
+    font-size:12px;
+    line-height:1.5;
+
+    color:#64748b;
+}
+
+
+
+/* ====================================
+   CTA SECTION
+==================================== */
+
+.cta-section{
+    background:#ffffff;
+
+    padding:24px 20px;
+
+    border-radius:16px;
+
+    text-align:center;
+
+    margin:20px 0;
+
+    border:1px solid #edf2ff;
+
+    box-shadow:
+    0 6px 18px rgba(0,0,0,.04);
+}
+
+.cta-content{
+    max-width:600px;
+    margin:auto;
+}
+
+.cta-content h2{
+    font-size:1.25rem;
+    font-weight:700;
+
+    color:#0f172a;
+
+    margin-bottom:6px;
+}
+
+.cta-content p{
+    font-size:12px;
+    line-height:1.6;
+
+    color:#64748b;
+
+    margin-bottom:12px;
+}
+
+.cta-content .primary-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+
+    padding:8px 16px;
+    font-size:12px;
+}
+
+/* ====================================
+   RESPONSIVE
+==================================== */
+
+@media(max-width:768px){
+
+    .section-heading h2{
+        font-size:1.8rem;
+    }
+
+    .features-grid{
+        gap:15px;
+    }
+
+    .feature-box{
+        padding:20px 16px;
+    }
+
+    .trust-strip{
+        gap:15px;
+    }
+
+    .cta-section{
+        padding:45px 25px;
+    }
+
+    .cta-content h2{
+        font-size:1.7rem;
+    }
+}
+
+@media(max-width:480px){
+
+    .section-heading h2{
+        font-size:1.6rem;
+    }
+
+    .feature-box h3{
+        font-size:15px;
+    }
+
+    .feature-box p{
+        font-size:12px;
+    }
+
+    .trust-item{
+        padding:18px;
+    }
+
+    .cta-content h2{
+        font-size:1.4rem;
+    }
+
+    .cta-content p{
+        font-size:14px;
+    }
+}

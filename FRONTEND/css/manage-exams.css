@@ -1,0 +1,405 @@
+/* ==================================
+   MANAGE EXAMS PAGE
+================================== */
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    margin-bottom:16px;
+}
+
+.page-header h2{
+    font-size:1.75rem;
+    font-weight:700;
+    color:var(--text);
+    margin:0 0 4px;
+    letter-spacing:-0.4px;
+}
+
+.page-header p{
+    font-size:.9rem;
+    color:#64748b;
+    margin:0;
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* ==================================
+   BUTTONS
+================================== */
+
+.primary-btn{
+    height:42px;
+    padding:0 18px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #3b82f6
+    );
+    color:#fff;
+    font-size:.9rem;
+    font-weight:600;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    transition:.25s;
+    box-shadow:
+        0 4px 10px rgba(37,99,235,.18);
+}
+
+.primary-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:
+        0 8px 18px rgba(37,99,235,.22);
+}
+
+/* ==================================
+   PANEL
+================================== */
+
+.panel{
+    background:#fff;
+    border:1px solid #e8edf5;
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:18px;
+    box-shadow:
+        0 1px 3px rgba(15,23,42,.04),
+        0 6px 18px rgba(15,23,42,.04);
+}
+
+/* ==================================
+   SEARCH TOOLBAR
+================================== */
+
+.search-toolbar{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.search-box{
+    flex:1;
+    position:relative;
+}
+
+.search-box i{
+    position:absolute;
+    left:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#94a3b8;
+    font-size:.9rem;
+}
+
+.search-box input{
+    width:100%;
+    height:44px;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:0 14px 0 42px;
+    font-size:.9rem;
+    background:#fafcff;
+    transition:.25s;
+}
+
+.search-box input:focus{
+    outline:none;
+    background:#fff;
+    border-color:var(--primary);
+    box-shadow:
+        0 0 0 3px rgba(37,99,235,.08);
+}
+
+#statusFilter{
+    width:180px;
+    height:44px;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:0 12px;
+    background:#fff;
+    font-size:.9rem;
+    cursor:pointer;
+    outline:none;
+}
+
+/* ==================================
+   EXAMS GRID
+================================== */
+
+.exam-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fill,minmax(300px,1fr));
+    gap:16px;
+}
+
+/* ==================================
+   EXAM CARD
+================================== */
+
+.exam-card{
+    position:relative;
+    overflow:hidden;
+    background:#fff;
+    border:1px solid #e8edf5;
+    border-radius:16px;
+    padding:16px;
+    transition:.25s;
+}
+
+.exam-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        #60a5fa
+    );
+}
+
+.exam-card:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 10px 24px rgba(15,23,42,.08);
+}
+
+/* ==================================
+   CARD HEADER
+================================== */
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:12px;
+}
+
+.card-header h3{
+    font-size:1rem;
+    font-weight:700;
+    color:#0f172a;
+    line-height:1.4;
+    margin:0 0 4px;
+}
+
+.card-header p{
+    font-size:.82rem;
+    color:#64748b;
+    margin:0;
+}
+
+/* ==================================
+   STATUS
+================================== */
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:5px 10px;
+    border-radius:999px;
+    font-size:.75rem;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+.status::before{
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:50%;
+}
+
+.status.published{
+    background:#ecfdf5;
+    color:#15803d;
+}
+
+.status.published::before{
+    background:#22c55e;
+}
+
+.status.draft{
+    background:#fff7ed;
+    color:#c2410c;
+}
+
+.status.draft::before{
+    background:#fb923c;
+}
+
+/* ==================================
+   META
+================================== */
+
+.exam-meta{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid #f1f5f9;
+}
+
+.exam-meta span{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:.82rem;
+    color:#475569;
+}
+
+.exam-meta i{
+    color:var(--primary);
+    font-size:.85rem;
+}
+
+/* ==================================
+   ACTIONS
+================================== */
+
+.card-actions{
+    display:flex;
+    gap:8px;
+    margin-top:14px;
+}
+
+.action-btn{
+    flex:1;
+    height:38px;
+    border-radius:10px;
+    border:1px solid #e2e8f0;
+    background:#fff;
+    font-size:.85rem;
+    font-weight:600;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    transition:.2s;
+}
+
+.action-btn:hover{
+    background:#f8fafc;
+}
+
+.action-btn.primary{
+    background:#eff6ff;
+    color:#2563eb;
+    border-color:#bfdbfe;
+}
+
+.action-btn.primary:hover{
+    background:#dbeafe;
+}
+
+.action-btn.danger{
+    color:#dc2626;
+    border-color:#fecaca;
+}
+
+.action-btn.danger:hover{
+    background:#fef2f2;
+}
+
+/* ==================================
+   EMPTY STATE
+================================== */
+
+.empty-state{
+    background:#fff;
+    border:2px dashed #dbe4f0;
+    border-radius:16px;
+    padding:50px 20px;
+    text-align:center;
+}
+
+.empty-state i{
+    font-size:3rem;
+    color:#cbd5e1;
+    margin-bottom:14px;
+}
+
+.empty-state h3{
+    font-size:1.1rem;
+    color:#0f172a;
+    margin-bottom:8px;
+}
+
+.empty-state p{
+    color:#64748b;
+    font-size:.9rem;
+    margin-bottom:18px;
+}
+
+/* ==================================
+   RESPONSIVE
+================================== */
+
+@media(max-width:992px){
+
+    .page-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .search-toolbar{
+        flex-direction:column;
+        width:100%;
+    }
+
+    #statusFilter{
+        width:100%;
+    }
+}
+
+@media(max-width:768px){
+
+    .exam-grid{
+        grid-template-columns:1fr;
+    }
+
+    .card-actions{
+        flex-direction:column;
+    }
+
+    .action-btn{
+        width:100%;
+    }
+}
+
+@media(max-width:576px){
+
+    .page-header h2{
+        font-size:1.45rem;
+    }
+
+    .exam-meta{
+        grid-template-columns:1fr;
+    }
+
+    .panel{
+        padding:14px;
+    }
+
+    .exam-card{
+        padding:14px;
+    }
+}

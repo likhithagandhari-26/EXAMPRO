@@ -1,0 +1,95 @@
+/* SUMMARY */
+
+.summary-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:20px;
+}
+
+.summary-card{
+    background:#fff;
+    padding:20px;
+    border-radius:16px;
+    text-align:center;
+    border:1px solid #e5e7eb;
+}
+
+.summary-card h3{
+    font-size:28px;
+    color:#2563eb;
+    margin-bottom:6px;
+}
+
+/* FILTERS */
+
+.filters{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:14px;
+    margin-bottom:20px;
+}
+
+/* TABLE */
+
+.panel{
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+}
+
+.panel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+
+.results-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.results-table th{
+    text-align:left;
+    padding:14px;
+    background:#f8fafc;
+}
+
+.results-table td{
+    padding:14px;
+    border-top:1px solid #edf2f7;
+}
+
+.pass{
+    color:#16a34a;
+    font-weight:600;
+}
+
+.fail{
+    color:#ef4444;
+    font-weight:600;
+}
+
+/* PAGINATION */
+
+.pagination{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+}
+
+.pagination button{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:10px;
+    background:#fff;
+    cursor:pointer;
+}
+
+.pagination .active{
+    background:#2563eb;
+    color:#fff;
+}

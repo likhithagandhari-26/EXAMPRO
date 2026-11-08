@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet" href="css\student-dashboard.css" />
+    <link rel="stylesheet" href="css\commondashboard-design.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="dashboard-container">
+      <!-- ==================================
+         SIDEBAR
+      ================================ -->
+
+      <aside class="sidebar" id="sidebar">
+        <!-- Logo -->
+
+        <div>
+          <div class="logo">
+            <h1>EXAM PRO</h1>
+            <p>Secure • Smart • Reliable</p>
+          </div>
+
+          <!-- Navigation -->
+           <nav class="sidebar-menu">
+    <ul>
+
+        <li class="active">
+            <a href="student-dashboard.html">
+                <i class="fa-solid fa-table-columns"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="student-exams.html">
+                <i class="fa-solid fa-laptop"></i>
+                <span>Exams</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="student-results.html">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Results</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="student-history.html">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>History</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="student-schedule.html">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Schedule</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="student-profile.html">
+                <i class="fa-solid fa-user-graduate"></i>
+                <span>Profile</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="student-notifications.html">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="help-center.html">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Help Center</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="settings.html">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+        </li>
+
+    </ul>
+</nav>
+
+        <!-- Exam Security Status -->
+
+        <div class="ai-card">
+          <div class="ai-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+
+          <h3>System Status</h3>
+
+          <p>
+            Exam security services are active and ready. Your assessments are
+            protected with AI monitoring.
+          </p>
+
+          <a href="#"> Security Details → </a>
+        </div>
+        <div class="sidebar-footer">
+          <a href="#" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- ==================================
+         MAIN CONTENT
+      ================================= -->
+
+      <main class="main-content">
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+          <!-- Menu Toggle -->
+
+          <div class="menu-btn" id="menuToggle" aria-label="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+
+          <div class="top-right">
+            <!-- Notifications -->
+
+            <div
+              class="notification"
+              id="notificationBtn"
+              aria-label="Notifications"
+            >
+              <i class="fa-regular fa-bell"></i>
+
+              <span id="notificationCount">0</span>
+
+              <div class="notification-dropdown" id="notificationDropdown">
+                <h4>Notifications</h4>
+
+                <ul>
+                  <li>New exam assigned</li>
+                  <li>Results published</li>
+                  <li>Upcoming exam reminder</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Student Profile -->
+
+            <div class="profile" id="profileBtn">
+              <div class="profile-avatar">
+                <i class="fa-solid fa-user-graduate"></i>
+              </div>
+
+              <div class="profile-info">
+                <h4 id="studentName">Loading...</h4>
+                <p id="studentRole">Student Account</p>
+              </div>
+
+              <i class="fa-solid fa-chevron-down"></i>
+
+              <div class="profile-dropdown" id="profileDropdown">
+                <a href="student-profile.html">
+                  <i class="fa-regular fa-user"></i>
+                  My Profile
+                </a>
+
+                <a href="student-results.html">
+                  <i class="fa-solid fa-chart-line"></i>
+                  Results
+                </a>
+
+                <a href="student-schedule.html">
+                  <i class="fa-solid fa-calendar-days"></i>
+                  Exam Schedule
+                </a>
+
+                <a href="settings.html">
+                  <i class="fa-solid fa-gear"></i>
+                  Settings
+                </a>
+
+                <hr />
+
+                <a href="#" class="logout-link" id="logoutDropdownBtn">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  Logout
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO -->
+
+        <section class="hero-card">
+          <div class="hero-text">
+            <h2>
+              <span id="greetingText">Good Morning</span>,
+              <span id="studentHeroName">Student</span> 👋
+            </h2>
+
+            <p id="heroMessage">Ready to take your next examination?</p>
+
+            <div class="hero-buttons">
+              <a href="student-exams.html" class="primary-btn">
+                <i class="fa-solid fa-play"></i>
+                Start Exam
+              </a>
+
+              <a href="student-results.html" class="outline-btn">
+                <i class="fa-solid fa-chart-line"></i>
+                View Results
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-image">
+            <img src="images/auth-laptop.png" alt="Exam Illustration" />
+          </div>
+        </section>
+
+        <!-- STATS -->
+
+        <!-- STATS -->
+
+        <section class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon blue">
+                <i class="fa-solid fa-file"></i>
+              </div>
+
+              <div>
+                <h2 id="totalExams" class="stat-number">0</h2>
+                <p class="stat-title">Total Exams</p>
+              </div>
+            </div>
+
+            <a href="student-exams.html" class="stat-link">View All →</a>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon green">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+
+              <div>
+                <h2 id="completedExams" class="stat-number">0</h2>
+                <p class="stat-title">Completed</p>
+              </div>
+            </div>
+
+            <a href="#" class="stat-link"> View All → </a>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon orange">
+                <i class="fa-regular fa-clock"></i>
+              </div>
+
+              <div>
+                <h2 id="pendingExams" class="stat-number">0</h2>
+                <p class="stat-title">Pending</p>
+              </div>
+            </div>
+
+            <a href="#" class="stat-link"> View All → </a>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon purple">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+              </div>
+
+              <div>
+                <h2 id="averageScore" class="stat-number">0%</h2>
+                <p class="stat-title">Average Score</p>
+              </div>
+            </div>
+
+            <a href="student-results.html" class="stat-link">
+              View Analytics →
+            </a>
+          </div>
+        </section>
+
+        <!-- LOWER GRID -->
+
+        <section class="lower-grid">
+          <!-- UPCOMING EXAMS -->
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3>
+                <i class="fa-regular fa-calendar"></i>
+                Upcoming Exams
+              </h3>
+              <a href="student-exams.html">View All</a>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="exam-table">
+                <thead>
+                  <tr>
+                    <th>Exam Name</th>
+                    <th>Date</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+
+                <tbody id="examTableBody">
+                  <tr class="empty-row">
+                    <td colspan="5">
+                      <div class="empty-state">
+                        <i class="fa-regular fa-calendar-xmark"></i>
+                        <p>No upcoming exams available</p>
+                        <span
+                          >New examinations will appear here once
+                          assigned.</span
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- RIGHT SIDE -->
+
+          <div class="right-column">
+            <!-- Recent Activity -->
+
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Recent Activity</h3>
+              </div>
+
+              <div id="activityContainer"></div>
+            </div>
+
+            <!-- Performance Overview -->
+
+            <div class="panel performance">
+              <div class="panel-header">
+                <h3>Performance Overview</h3>
+              </div>
+
+              <canvas id="performanceChart"></canvas>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/student-dashboard.js"></script>
+  </body>
+</html>
+

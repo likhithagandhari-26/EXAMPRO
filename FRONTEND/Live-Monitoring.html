@@ -1,0 +1,1180 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Live Monitoring | Exam Pro</title>
+
+        <!-- Common Dashboard CSS -->
+        <link rel="stylesheet" href="css/commondashboard-design.css" />
+
+        <!-- Page Specific CSS -->
+        <link rel="stylesheet" href="css/Live-Monitoring.css" />
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+        <!-- Google Font -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Monitoring JavaScript -->
+        <script src="js/admin-monitoring.js" defer></script>
+    </head>
+
+    <body>
+        <div class="dashboard-container">
+            <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-content">
+                    <!-- LOGO -->
+                    <div class="logo">
+                        <h1>EXAM PRO</h1>
+                        <p>Secure • Smart • Reliable</p>
+                    </div>
+
+                    <!-- NAVIGATION -->
+                    <nav class="sidebar-menu" aria-label="Admin navigation">
+                        <ul>
+                            <li>
+                                <a href="admin-dashboard.html">
+                                    <i class="fa-solid fa-table-columns"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="students.html">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>Students</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="create-exam.html">
+                                    <i class="fa-solid fa-file-circle-plus"></i>
+                                    <span>Create Exams</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="manage-exams.html">
+                                    <i class="fa-solid fa-list-check"></i>
+                                    <span>Manage Exams</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="question-manager.html">
+                                    <i class="fa-solid fa-circle-question"></i>
+                                    <span>Question Manager</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-question-bank.html">
+                                    <i class="fa-solid fa-book"></i>
+                                    <span>Question Bank</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-schedule.html">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <span>Schedule</span>
+                                </a>
+                            </li>
+
+                            <li class="active">
+                                <a href="admin-monitoring.html" aria-current="page">
+                                    <i class="fa-solid fa-video"></i>
+                                    <span>Live Monitoring</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-results.html">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Results</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-analytics.html">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                    <span>Analytics</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-reports.html">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>Reports</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-settings.html">
+                                    <i class="fa-solid fa-gear"></i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <!-- AI PROCTORING -->
+                    <div class="ai-card">
+                        <div class="ai-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+
+                        <h3>AI Proctoring</h3>
+
+                        <p>Automated monitoring and suspicious activity detection are active during examinations.</p>
+
+                        <a href="admin-settings.html">
+                            View Settings
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SIDEBAR FOOTER -->
+                <div class="sidebar-footer">
+                    <button type="button" id="logoutBtn" class="sidebar-logout">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- =========================================================
+         MAIN CONTENT
+    ========================================================== -->
+
+            <main class="main-content">
+                <!-- =====================================================
+             TOPBAR
+        ====================================================== -->
+
+                <!-- ============================================
+     TOPBAR
+================================================= -->
+                <header class="topbar">
+                    <!-- MOBILE / SIDEBAR MENU -->
+                    <div class="menu-btn" id="menuToggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+
+                    <!-- TOPBAR RIGHT -->
+                    <div class="top-right">
+                        <!-- SYSTEM CONNECTION STATUS -->
+                        <div
+                            class="system-status"
+                            id="systemStatus"
+                            title="Monitoring connection status"
+                            role="status"
+                            aria-live="polite"
+                        >
+                            <span class="status-indicator" aria-hidden="true"></span>
+                            <span id="connectionText">Connecting...</span>
+                        </div>
+
+                        <!-- NOTIFICATIONS -->
+                        <div class="notification">
+                            <i class="fa-regular fa-bell"></i>
+                            <span>0</span>
+                        </div>
+
+                        <!-- ADMIN PROFILE -->
+                        <div class="profile">
+                            <div class="profile-avatar">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+
+                            <div class="profile-info">
+                                <h4>Administrator</h4>
+                                <p>Super Admin</p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <!-- /.top-right -->
+                </header>
+
+                <!-- =====================================================
+             PAGE HEADER
+        ====================================================== -->
+
+                <section class="monitoring-header">
+                    <div class="page-title">
+                        <div class="title-icon">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+
+                        <div>
+                            <div class="title-row">
+                                <h2>Live Monitoring</h2>
+
+                                <span class="live-status-badge">
+                                    <span class="live-dot"></span>
+                                    LIVE
+                                </span>
+                            </div>
+
+                            <p>
+                                Monitor examination activity, student progress, proctoring alerts and security events in
+                                real time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="monitoring-actions">
+                        <div class="last-updated">
+                            <span>Last updated</span>
+                            <strong id="lastUpdated">—</strong>
+                        </div>
+
+                        <button
+                            class="secondary-btn"
+                            id="refreshBtn"
+                            type="button"
+                            aria-label="Refresh monitoring data"
+                        >
+                            <i class="fa-solid fa-rotate"></i>
+                            Refresh
+                        </button>
+
+                        <button class="secondary-btn" id="fullscreenBtn" type="button">
+                            <i class="fa-solid fa-expand"></i>
+                            Monitoring Mode
+                        </button>
+                    </div>
+                </section>
+
+                <!-- =====================================================
+             AUTO REFRESH BAR
+        ====================================================== -->
+
+                <section class="monitoring-toolbar-card">
+                    <div class="monitoring-status-info">
+                        <div class="status-icon">
+                            <i class="fa-solid fa-satellite-dish"></i>
+                        </div>
+
+                        <div>
+                            <strong>Live Monitoring Active</strong>
+                            <span id="monitoringStatusText"> Receiving examination activity updates </span>
+                        </div>
+                    </div>
+
+                    <div class="monitoring-toolbar-actions">
+                        <label class="auto-refresh-control">
+                            <span>Auto Refresh</span>
+
+                            <select id="refreshInterval">
+                                <option value="3000">3 seconds</option>
+                                <option value="5000" selected>5 seconds</option>
+                                <option value="10000">10 seconds</option>
+                                <option value="30000">30 seconds</option>
+                            </select>
+                        </label>
+
+                        <label class="toggle-control">
+                            <input type="checkbox" id="autoRefreshToggle" checked />
+
+                            <span class="toggle-slider"></span>
+
+                            <span>Enabled</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- =====================================================
+             CURRENT EXAM
+        ====================================================== -->
+
+                <section class="exam-status-card">
+                    <div class="exam-info">
+                        <div class="exam-icon">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+
+                        <div class="exam-info-content">
+                            <div class="exam-title-row">
+                                <h3 id="examName">Loading examination...</h3>
+
+                                <span class="exam-state-badge" id="examStateBadge"> Loading </span>
+                            </div>
+
+                            <div class="exam-meta">
+                                <span>
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span id="examDuration"> Duration: — </span>
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-users"></i>
+                                    <span id="examParticipantCount"> — participants </span>
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <span id="examDate"> — </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exam-timer">
+                        <span>TIME REMAINING</span>
+
+                        <strong id="examTimer"> --:-- </strong>
+
+                        <small id="examEndTime"> End time: — </small>
+                    </div>
+                </section>
+
+                <!-- =====================================================
+             MONITORING STATISTICS
+        ====================================================== -->
+
+                <section class="monitoring-stats">
+                    <!-- LIVE -->
+                    <article class="monitor-stat-card">
+                        <div class="monitor-stat-icon blue">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+
+                        <div class="monitor-stat-content">
+                            <span>Live Students</span>
+
+                            <h3 id="liveStudents">—</h3>
+
+                            <small id="liveStudentChange"> Monitoring now </small>
+                        </div>
+                    </article>
+
+                    <!-- ACTIVE -->
+                    <article class="monitor-stat-card">
+                        <div class="monitor-stat-icon green">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+
+                        <div class="monitor-stat-content">
+                            <span>Active</span>
+
+                            <h3 id="activeStudents">—</h3>
+
+                            <small> Currently answering </small>
+                        </div>
+                    </article>
+
+                    <!-- WARNINGS -->
+                    <article class="monitor-stat-card alert-stat">
+                        <div class="monitor-stat-icon orange">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                        <div class="monitor-stat-content">
+                            <span>Warnings</span>
+
+                            <h3 id="warningStudents">—</h3>
+
+                            <small id="warningSummary"> No alerts loaded </small>
+                        </div>
+                    </article>
+
+                    <!-- OFFLINE -->
+                    <article class="monitor-stat-card">
+                        <div class="monitor-stat-icon red">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+
+                        <div class="monitor-stat-content">
+                            <span>Offline</span>
+
+                            <h3 id="offlineStudents">—</h3>
+
+                            <small> Connection lost </small>
+                        </div>
+                    </article>
+
+                    <!-- SUBMITTED -->
+                    <article class="monitor-stat-card">
+                        <div class="monitor-stat-icon purple">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </div>
+
+                        <div class="monitor-stat-content">
+                            <span>Submitted</span>
+
+                            <h3 id="submittedStudents">—</h3>
+
+                            <small> Completed attempts </small>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- =====================================================
+             EXAM PROGRESS
+        ====================================================== -->
+
+                <section class="panel progress-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h3>
+                                <i class="fa-solid fa-chart-simple"></i>
+                                Exam Progress
+                            </h3>
+
+                            <p>Overall participation and completion status</p>
+                        </div>
+
+                        <span id="progressPercentage" class="progress-badge"> —% Active </span>
+                    </div>
+
+                    <div class="progress-container">
+                        <div
+                            class="progress-bar"
+                            role="progressbar"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            aria-valuenow="0"
+                            id="progressBar"
+                        >
+                            <div class="progress-fill" id="examProgress"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-summary">
+                        <div class="progress-summary-item">
+                            <strong id="startedCount">—</strong>
+
+                            <span>
+                                <i class="fa-solid fa-play"></i>
+                                Started
+                            </span>
+                        </div>
+
+                        <div class="progress-summary-item">
+                            <strong id="inProgressCount">—</strong>
+
+                            <span>
+                                <i class="fa-solid fa-spinner"></i>
+                                In Progress
+                            </span>
+                        </div>
+
+                        <div class="progress-summary-item">
+                            <strong id="submittedCount">—</strong>
+
+                            <span>
+                                <i class="fa-solid fa-check"></i>
+                                Submitted
+                            </span>
+                        </div>
+
+                        <div class="progress-summary-item">
+                            <strong id="notStartedCount">—</strong>
+
+                            <span>
+                                <i class="fa-solid fa-hourglass-start"></i>
+                                Not Started
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- =====================================================
+             MAIN MONITORING GRID
+        ====================================================== -->
+
+                <section class="monitoring-grid">
+                    <!-- =================================================
+                 STUDENT MONITORING
+            ================================================== -->
+
+                    <section class="panel student-monitoring-panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>
+                                    <i class="fa-solid fa-users-viewfinder"></i>
+                                    Student Monitoring
+                                </h3>
+
+                                <p>Track individual examination activity</p>
+                            </div>
+
+                            <span id="studentCount" class="panel-count"> — Students </span>
+                        </div>
+
+                        <!-- SEARCH + FILTER -->
+                        <div class="monitoring-toolbar">
+                            <div class="search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+
+                                <input
+                                    type="search"
+                                    id="studentSearch"
+                                    placeholder="Search student name or ID..."
+                                    autocomplete="off"
+                                    aria-label="Search students"
+                                />
+
+                                <button
+                                    type="button"
+                                    id="clearSearchBtn"
+                                    class="clear-search"
+                                    aria-label="Clear search"
+                                    hidden
+                                >
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+
+                            <div class="filter-group">
+                                <select id="statusFilter" aria-label="Filter by student status">
+                                    <option value="all">All Status</option>
+
+                                    <option value="active">Active</option>
+
+                                    <option value="idle">Idle</option>
+
+                                    <option value="offline">Offline</option>
+
+                                    <option value="submitted">Submitted</option>
+
+                                    <option value="not-started">Not Started</option>
+                                </select>
+
+                                <select id="warningFilter" aria-label="Filter by warning status">
+                                    <option value="all">All Warnings</option>
+
+                                    <option value="warning">Has Warnings</option>
+
+                                    <option value="critical">Critical</option>
+
+                                    <option value="none">No Warnings</option>
+                                </select>
+
+                                <select id="sortStudents" aria-label="Sort students">
+                                    <option value="name">Sort: Name</option>
+
+                                    <option value="progress">Sort: Progress</option>
+
+                                    <option value="time">Sort: Time Remaining</option>
+
+                                    <option value="warnings">Sort: Warnings</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- TABLE -->
+                        <div class="table-wrapper">
+                            <table class="monitoring-table">
+                                <caption class="sr-only">
+                                    Live examination student monitoring
+                                </caption>
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Student</th>
+
+                                        <th scope="col">Status</th>
+
+                                        <th scope="col">Progress</th>
+
+                                        <th scope="col">Time</th>
+
+                                        <th scope="col">Camera</th>
+
+                                        <th scope="col">Warnings</th>
+
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="studentTableBody">
+                                    <tr class="loading-row">
+                                        <td colspan="7">
+                                            <div class="loading-state">
+                                                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                                                <span> Loading student monitoring data... </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- TABLE FOOTER -->
+                        <div class="table-footer">
+                            <span id="tableResultText"> Loading students... </span>
+
+                            <div class="pagination">
+                                <button id="previousPage" type="button" disabled aria-label="Previous page">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+
+                                <span class="current-page" id="currentPage"> 1 </span>
+
+                                <span class="page-total" id="totalPages"> of 1 </span>
+
+                                <button id="nextPage" type="button" disabled aria-label="Next page">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- =================================================
+                 RIGHT COLUMN
+            ================================================== -->
+
+                    <aside class="monitoring-right-column">
+                        <!-- =================================================
+                     LIVE ACTIVITY
+                ================================================== -->
+
+                        <section class="panel activity-panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>
+                                        <i class="fa-solid fa-bolt"></i>
+                                        Live Activity
+                                    </h3>
+
+                                    <p>Recent examination events</p>
+                                </div>
+
+                                <span class="live-label">
+                                    <span class="live-dot"></span>
+                                    LIVE
+                                </span>
+                            </div>
+
+                            <div class="activity-feed" id="activityFeed" aria-live="polite">
+                                <div class="loading-state">
+                                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                                    <span> Loading live activity... </span>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- =================================================
+                     SECURITY ALERTS
+                ================================================== -->
+
+                        <section class="panel security-panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>
+                                        <i class="fa-solid fa-shield-halved"></i>
+                                        Security Alerts
+                                    </h3>
+
+                                    <p>Proctoring events requiring attention</p>
+                                </div>
+
+                                <span class="alert-count" id="alertCount"> 0 </span>
+                            </div>
+
+                            <div class="alert-filter-tabs">
+                                <button type="button" class="alert-tab active" data-alert-filter="all">All</button>
+
+                                <button type="button" class="alert-tab" data-alert-filter="critical">Critical</button>
+
+                                <button type="button" class="alert-tab" data-alert-filter="warning">Warning</button>
+                            </div>
+
+                            <div id="securityAlerts" aria-live="polite">
+                                <div class="loading-state">
+                                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                                    <span> Loading security alerts... </span>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- =================================================
+                     SELECTED STUDENT
+                ================================================== -->
+
+                        <section class="panel student-detail-panel" id="studentDetailPanel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>
+                                        <i class="fa-solid fa-user"></i>
+                                        Student Details
+                                    </h3>
+
+                                    <p>Selected examination participant</p>
+                                </div>
+                            </div>
+
+                            <!-- STUDENT HEADER -->
+                            <div class="selected-student">
+                                <div class="large-avatar" id="detailAvatar">—</div>
+
+                                <div>
+                                    <h3 id="detailName">Select a student</h3>
+
+                                    <p id="detailId">Student ID —</p>
+
+                                    <span id="detailStatusBadge" class="detail-status-badge"> — </span>
+                                </div>
+                            </div>
+
+                            <!-- CAMERA PREVIEW -->
+                            <div class="camera-preview">
+                                <div class="camera-preview-header">
+                                    <span>
+                                        <i class="fa-solid fa-camera"></i>
+                                        Proctoring Camera
+                                    </span>
+
+                                    <span id="detailCameraStatus" class="camera-status"> — </span>
+                                </div>
+
+                                <div class="camera-screen" id="cameraPreview">
+                                    <div class="camera-placeholder">
+                                        <i class="fa-solid fa-video-slash"></i>
+
+                                        <span> Select a student to view camera </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- DETAILS -->
+                            <div class="detail-grid">
+                                <div class="detail-item">
+                                    <span>Status</span>
+
+                                    <strong id="detailStatus" class="detail-status"> — </strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <span>Progress</span>
+
+                                    <strong id="detailProgress"> — </strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <span>Camera</span>
+
+                                    <strong id="detailCamera"> — </strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <span>Warnings</span>
+
+                                    <strong id="detailWarnings"> — </strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <span>Current Question</span>
+
+                                    <strong id="detailQuestion"> — </strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <span>Time Remaining</span>
+
+                                    <strong id="detailTimeRemaining"> — </strong>
+                                </div>
+                            </div>
+
+                            <!-- ACTIONS -->
+                            <div class="detail-actions">
+                                <button type="button" class="warning-btn" id="sendWarningBtn" disabled>
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                    Send Warning
+                                </button>
+
+                                <button type="button" class="danger-btn" id="terminateBtn" disabled>
+                                    <i class="fa-solid fa-user-xmark"></i>
+                                    Terminate Exam
+                                </button>
+                            </div>
+                        </section>
+                    </aside>
+                </section>
+
+                <!-- =====================================================
+             EXAM CONTROLS
+        ====================================================== -->
+
+                <section class="panel exam-controls-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h3>
+                                <i class="fa-solid fa-sliders"></i>
+                                Exam Controls
+                            </h3>
+
+                            <p>Administrator actions for the active examination</p>
+                        </div>
+
+                        <span class="admin-action-label"> Administrator Actions </span>
+                    </div>
+
+                    <div class="exam-controls">
+                        <!-- PAUSE / RESUME -->
+                        <button type="button" class="control-btn pause" id="pauseExamBtn">
+                            <i class="fa-solid fa-pause" id="pauseExamIcon"></i>
+
+                            <div>
+                                <strong id="pauseExamText"> Pause Exam </strong>
+
+                                <span id="pauseExamDescription"> Temporarily pause examination </span>
+                            </div>
+                        </button>
+
+                        <!-- EXTEND TIME -->
+                        <button type="button" class="control-btn extend" id="extendTimeBtn">
+                            <i class="fa-solid fa-clock"></i>
+
+                            <div>
+                                <strong> Extend Time </strong>
+
+                                <span> Add additional examination time </span>
+                            </div>
+                        </button>
+
+                        <!-- BROADCAST -->
+                        <button type="button" class="control-btn warning" id="broadcastBtn">
+                            <i class="fa-solid fa-bullhorn"></i>
+
+                            <div>
+                                <strong> Broadcast Message </strong>
+
+                                <span> Send a message to participants </span>
+                            </div>
+                        </button>
+
+                        <!-- END EXAM -->
+                        <button type="button" class="control-btn end" id="endExamBtn">
+                            <i class="fa-solid fa-stop"></i>
+
+                            <div>
+                                <strong> End Exam </strong>
+
+                                <span> End examination for everyone </span>
+                            </div>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- =====================================================
+             LOWER MONITORING GRID
+        ====================================================== -->
+
+                <section class="lower-monitoring-grid">
+                    <!-- COMPLETION STATISTICS -->
+                    <section class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                    Completion Statistics
+                                </h3>
+
+                                <p>Examination participation overview</p>
+                            </div>
+                        </div>
+
+                        <div class="completion-stats">
+                            <div class="completion-item">
+                                <div class="completion-icon green">
+                                    <i class="fa-solid fa-play"></i>
+                                </div>
+
+                                <div>
+                                    <strong id="completionStarted"> — </strong>
+
+                                    <span> Started </span>
+                                </div>
+                            </div>
+
+                            <div class="completion-item">
+                                <div class="completion-icon blue">
+                                    <i class="fa-solid fa-spinner"></i>
+                                </div>
+
+                                <div>
+                                    <strong id="completionInProgress"> — </strong>
+
+                                    <span> In Progress </span>
+                                </div>
+                            </div>
+
+                            <div class="completion-item">
+                                <div class="completion-icon purple">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div>
+                                    <strong id="completionSubmitted"> — </strong>
+
+                                    <span> Submitted </span>
+                                </div>
+                            </div>
+
+                            <div class="completion-item">
+                                <div class="completion-icon orange">
+                                    <i class="fa-solid fa-hourglass-start"></i>
+                                </div>
+
+                                <div>
+                                    <strong id="completionNotStarted"> — </strong>
+
+                                    <span> Not Started </span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ADMIN ACTIVITY -->
+                    <section class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>
+                                    <i class="fa-solid fa-clock-rotate-left"></i>
+                                    Admin Activity
+                                </h3>
+
+                                <p>Recent administrator actions</p>
+                            </div>
+
+                            <a href="admin-reports.html">
+                                View All
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="audit-log" id="auditLog">
+                            <div class="loading-state">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                                <span> Loading activity... </span>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <!-- =====================================================
+             FOOTER ACTIONS
+        ====================================================== -->
+
+                <section class="monitoring-footer-actions">
+                    <button type="button" class="secondary-btn" id="activityLogBtn">
+                        <i class="fa-solid fa-list"></i>
+                        View Activity Log
+                    </button>
+
+                    <button type="button" class="secondary-btn" id="exportReportBtn">
+                        <i class="fa-solid fa-download"></i>
+                        Export Monitoring Report
+                    </button>
+
+                    <a href="admin-results.html" class="primary-btn">
+                        <i class="fa-solid fa-chart-line"></i>
+                        View Results
+                    </a>
+                </section>
+
+                <!-- =====================================================
+             CONFIRMATION MODAL
+        ====================================================== -->
+
+                <div
+                    class="modal-overlay"
+                    id="confirmationModal"
+                    hidden
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="modalTitle"
+                >
+                    <div class="confirmation-modal">
+                        <button type="button" class="modal-close" id="closeModalBtn" aria-label="Close dialog">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+
+                        <div class="modal-icon" id="modalIcon">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                        <h3 id="modalTitle">Confirm Action</h3>
+
+                        <p id="modalMessage">Please confirm this action.</p>
+
+                        <div class="modal-buttons">
+                            <button type="button" class="secondary-btn" id="cancelModalBtn">Cancel</button>
+
+                            <button type="button" class="danger-btn" id="confirmModalBtn">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+             EXTEND TIME MODAL
+        ====================================================== -->
+
+                <div
+                    class="modal-overlay"
+                    id="extendTimeModal"
+                    hidden
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="extendTimeTitle"
+                >
+                    <div class="action-modal">
+                        <button type="button" class="modal-close" id="closeExtendModalBtn" aria-label="Close dialog">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+
+                        <div class="modal-icon blue">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+
+                        <h3 id="extendTimeTitle">Extend Examination Time</h3>
+
+                        <p>Select the additional time you want to provide to all active participants.</p>
+
+                        <div class="time-options">
+                            <button type="button" class="time-option" data-minutes="5">+5 min</button>
+
+                            <button type="button" class="time-option" data-minutes="10">+10 min</button>
+
+                            <button type="button" class="time-option" data-minutes="15">+15 min</button>
+
+                            <button type="button" class="time-option" data-minutes="30">+30 min</button>
+                        </div>
+
+                        <div class="modal-buttons">
+                            <button type="button" class="secondary-btn" id="cancelExtendBtn">Cancel</button>
+
+                            <button type="button" class="primary-btn" id="confirmExtendBtn" disabled>Add Time</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+             BROADCAST MESSAGE MODAL
+        ====================================================== -->
+
+                <div
+                    class="modal-overlay"
+                    id="broadcastModal"
+                    hidden
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="broadcastTitle"
+                >
+                    <div class="action-modal">
+                        <button type="button" class="modal-close" id="closeBroadcastModalBtn" aria-label="Close dialog">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+
+                        <div class="modal-icon orange">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+
+                        <h3 id="broadcastTitle">Broadcast Message</h3>
+
+                        <p>Send an important message to examination participants.</p>
+
+                        <div class="form-group">
+                            <label for="broadcastAudience"> Send To </label>
+
+                            <select id="broadcastAudience">
+                                <option value="all">All Students</option>
+
+                                <option value="active">Active Students</option>
+
+                                <option value="idle">Idle Students</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="broadcastMessage"> Message </label>
+
+                            <textarea
+                                id="broadcastMessage"
+                                rows="5"
+                                maxlength="500"
+                                placeholder="Type your message..."
+                            ></textarea>
+
+                            <div class="character-count">
+                                <span id="messageCharacterCount"> 0 </span>
+                                / 500
+                            </div>
+                        </div>
+
+                        <div class="modal-buttons">
+                            <button type="button" class="secondary-btn" id="cancelBroadcastBtn">Cancel</button>
+
+                            <button type="button" class="primary-btn" id="sendBroadcastBtn" disabled>
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+             ALERT DETAIL MODAL
+        ====================================================== -->
+
+                <div
+                    class="modal-overlay"
+                    id="alertDetailModal"
+                    hidden
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="alertDetailTitle"
+                >
+                    <div class="action-modal">
+                        <button type="button" class="modal-close" id="closeAlertModalBtn" aria-label="Close dialog">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+
+                        <div class="modal-icon red">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+
+                        <h3 id="alertDetailTitle">Security Alert</h3>
+
+                        <div class="alert-detail-content" id="alertDetailContent">Loading alert details...</div>
+
+                        <div class="modal-buttons">
+                            <button type="button" class="secondary-btn" id="closeAlertDetailBtn">Close</button>
+
+                            <button type="button" class="primary-btn" id="acknowledgeAlertBtn">
+                                <i class="fa-solid fa-check"></i>
+                                Acknowledge
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+             TOAST NOTIFICATION
+        ====================================================== -->
+
+                <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+            </main>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Results | Exam Pro</title>
+
+        <link rel="stylesheet" href="css/commondashboard-design.css" />
+
+        <link rel="stylesheet" href="css/results.css" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <div class="dashboard-container">
+            <aside class="sidebar" id="sidebar">
+                <div>
+                    <div class="logo">
+                        <h1>EXAM PRO</h1>
+                        <p>Secure • Smart • Reliable</p>
+                    </div>
+
+                    <nav class="sidebar-menu">
+                        <ul>
+                            <li>
+                                <a href="admin-dashboard.html">
+                                    <i class="fa-solid fa-table-columns"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Students.html">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>Students</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="create-exam.html">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                    <span>Create Exams</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="manage-exams.html">
+                                    <i class="fa-solid fa-list-check"></i>
+                                    <span>Manage Exams</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="question-manager.html">
+                                    <i class="fa-solid fa-book-open"></i>
+                                    <span>Question Manager</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-question-bank.html">
+                                    <i class="fa-solid fa-book"></i>
+                                    <span>Question Bank</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-schedule.html">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <span>Schedule</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-monitoring.html">
+                                    <i class="fa-solid fa-video"></i>
+                                    <span>Live Monitoring</span>
+                                </a>
+                            </li>
+
+                            <li class="active">
+                                <a href="admin-results.html">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Results</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-analytics.html">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                    <span>Analytics</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-reports.html">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>Reports</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-settings.html">
+                                    <i class="fa-solid fa-gear"></i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="ai-card">
+                        <div class="ai-icon">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+
+                        <h3>Schedule Center</h3>
+
+                        <p>Manage upcoming examinations, schedules and student events.</p>
+
+                        <a href="#"> View Calendar → </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-footer">
+                    <a href="#" id="logoutBtn">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <!-- =====================================
+             PAGE HEADER
+        ====================================== -->
+
+                <div class="page-header">
+                    <div>
+                        <h1>Exam Results</h1>
+
+                        <p>Analyze your performance and review your answers.</p>
+                    </div>
+
+                    <div class="header-actions">
+                        <button class="secondary-btn" id="downloadPdfBtn">
+                            <i class="fa-solid fa-download"></i>
+                            Download PDF
+                        </button>
+
+                        <button class="primary-btn" id="backDashboardBtn">
+                            <i class="fa-solid fa-house"></i>
+                            Dashboard
+                        </button>
+                    </div>
+                </div>
+
+                <!-- =====================================
+     RESULT BANNER
+====================================== -->
+
+                <section class="result-banner">
+                    <div class="banner-left">
+                        <div class="banner-icon">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+
+                        <div>
+                            <h2 id="resultHeading">Examination Completed</h2>
+
+                            <p id="resultMessage">Loading result details...</p>
+                        </div>
+                    </div>
+
+                    <div class="banner-right">
+                        <div>
+                            <span> Reference Number </span>
+
+                            <strong id="referenceNumber"> -- </strong>
+                        </div>
+
+                        <div>
+                            <span> Submitted On </span>
+
+                            <strong id="submittedAt"> -- </strong>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- =====================================
+     SCORE OVERVIEW
+====================================== -->
+
+                <section class="score-grid">
+                    <div class="score-card">
+                        <div class="score-icon green">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </div>
+
+                        <h3 id="scoreValue">--</h3>
+
+                        <p>Final Score</p>
+                    </div>
+
+                    <div class="score-card">
+                        <div class="score-icon blue">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+
+                        <h3 id="percentageValue">--</h3>
+
+                        <p>Percentage</p>
+                    </div>
+
+                    <div class="score-card">
+                        <div class="score-icon purple">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+
+                        <h3 id="gradeValue">--</h3>
+
+                        <p>Grade</p>
+                    </div>
+
+                    <div class="score-card">
+                        <div class="score-icon orange">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                        <h3 id="statusValue">--</h3>
+
+                        <p>Status</p>
+                    </div>
+                </section>
+
+                <!-- =====================================
+     STATISTICS
+====================================== -->
+
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-list-check"></i>
+
+                        <div>
+                            <h4 id="totalQuestions">0</h4>
+
+                            <p>Total Questions</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <div>
+                            <h4 id="correctAnswers">0</h4>
+
+                            <p>Correct Answers</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <i class="fa-solid fa-circle-xmark"></i>
+
+                        <div>
+                            <h4 id="wrongAnswers">0</h4>
+
+                            <p>Wrong Answers</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <i class="fa-solid fa-circle-question"></i>
+
+                        <div>
+                            <h4 id="unansweredQuestions">0</h4>
+
+                            <p>Unanswered</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <i class="fa-solid fa-clock"></i>
+
+                        <div>
+                            <h4 id="timeTaken">--</h4>
+
+                            <p>Time Taken</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- =====================================
+     PERFORMANCE SECTION
+====================================== -->
+
+                <section class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h3>Performance Overview</h3>
+                        </div>
+
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h3>Result Summary</h3>
+                        </div>
+
+                        <div class="summary-list">
+                            <div class="summary-item">
+                                <span>Exam</span>
+
+                                <strong id="examTitle"> Loading... </strong>
+                            </div>
+
+                            <div class="summary-item">
+                                <span>Subject</span>
+
+                                <strong id="examSubject"> Loading... </strong>
+                            </div>
+
+                            <div class="summary-item">
+                                <span>Score</span>
+
+                                <strong id="summaryScore"> -- </strong>
+                            </div>
+
+                            <div class="summary-item">
+                                <span>Percentage</span>
+
+                                <strong id="summaryPercentage"> -- </strong>
+                            </div>
+
+                            <div class="summary-item">
+                                <span>Grade</span>
+
+                                <strong id="summaryGrade"> -- </strong>
+                            </div>
+
+                            <div class="summary-item">
+                                <span>Status</span>
+
+                                <strong id="summaryStatus" class="status-badge"> -- </strong>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            
+
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                <script src="js/results.js"></script>
+            </main>
+        </div>
+    </body>
+</html>

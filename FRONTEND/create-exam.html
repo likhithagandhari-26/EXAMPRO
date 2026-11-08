@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Create Exam | Exam Pro</title>
+
+        <link rel="stylesheet" href="css/commondashboard-design.css" />
+        <link rel="stylesheet" href="css/create-exam.css" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <div class="dashboard-container">
+            <!-- SIDEBAR -->
+            <aside class="sidebar" id="sidebar">
+                <div>
+                    <div class="logo">
+                        <h1>EXAM PRO</h1>
+                        <p>Secure • Smart • Reliable</p>
+                    </div>
+
+                    <nav class="sidebar-menu">
+                        <ul>
+                            <li>
+                                <a href="admin-dashboard.html">
+                                    <i class="fa-solid fa-table-columns"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-students.html">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>Students</span>
+                                </a>
+                            </li>
+
+                            <li class="active">
+                                <a href="admin-exams.html">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                    <span>Create Exams</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="manage-exams.html">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                    <span>Manage Exams</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="question-manager.html">
+                                    <i class="fa-solid fa-list-check"></i>
+                                    <span>Question Manager</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-question-bank.html">
+                                    <i class="fa-solid fa-book"></i>
+                                    <span>Question Bank</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-schedule.html">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <span>Schedule</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-monitoring.html">
+                                    <i class="fa-solid fa-video"></i>
+                                    <span>Live Monitoring</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-results.html">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Results</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-analytics.html">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                    <span>Analytics</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-reports.html">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>Reports</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-settings.html">
+                                    <i class="fa-solid fa-gear"></i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="ai-card">
+                        <div class="ai-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+
+                        <h3>AI Proctoring</h3>
+
+                        <p>Live monitoring and fraud detection active across all examinations.</p>
+
+                        <a href="#"> View Details → </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-footer">
+                    <a href="#" id="logoutBtn">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+
+            <main class="main-content">
+                <!-- TOPBAR -->
+
+                <div class="topbar">
+                    <div class="menu-btn">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+
+                    <div class="top-right">
+                        <div class="notification">
+                            <i class="fa-regular fa-bell"></i>
+                            <span>0</span>
+                        </div>
+
+                        <div class="profile">
+                            <div class="profile-avatar">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+
+                            <div class="profile-info">
+                                <h4>Administrator</h4>
+                                <p>Super Admin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE HEADER -->
+
+                <section class="page-header">
+                    <div>
+                        <h2>Create Examination</h2>
+                        <p>Create exam details before adding questions.</p>
+                    </div>
+
+                    <div class="header-actions">
+                        <span class="status-badge"> Draft </span>
+
+                        <button id="saveDraftBtn" class="secondary-btn">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            Save Draft
+                        </button>
+
+                        <button id="continueBtn" class="primary-btn">
+                            <i class="fa-solid fa-arrow-right"></i>
+                            Continue
+                        </button>
+                    </div>
+                </section>
+                <!-- EXAM DETAILS -->
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <h3>
+                            <i class="fa-solid fa-file-circle-plus"></i>
+                            Exam Details
+                        </h3>
+                    </div>
+
+                    <!-- BASIC DETAILS -->
+
+                    <div class="exam-form-grid">
+                        <div class="form-group">
+                            <label>Exam Title *</label>
+                            <input type="text" id="examTitle" placeholder="Enter Exam Title" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Subject *</label>
+                            <input type="text" id="subject" placeholder="Enter Subject" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Exam Date</label>
+                            <input type="date" id="examDate" />
+                        </div>
+                    </div>
+
+                    <!-- OPTIONAL SETTINGS -->
+
+                    <div class="optional-settings">
+                        <!-- Timed Exam -->
+
+                        <div class="setting-card">
+                            <label class="field-toggle">
+                                <input type="checkbox" id="enableDuration" />
+
+                                <span>Timed Exam</span>
+                            </label>
+
+                            <input type="number" id="duration" placeholder="Minutes" disabled />
+                        </div>
+
+                        <!-- Marks -->
+
+                        <div class="setting-card">
+                            <label class="field-toggle">
+                                <input type="checkbox" id="enableMarks" />
+
+                                <span>Total Marks</span>
+                            </label>
+
+                            <input type="number" id="totalMarks" placeholder="Marks" disabled />
+                        </div>
+
+                        <!-- Question Count -->
+
+                        <div class="setting-card">
+                            <label class="field-toggle">
+                                <input type="checkbox" id="enableQuestionCount" />
+
+                                <span>Question Limit</span>
+                            </label>
+
+                            <input type="number" id="totalQuestions" placeholder="Questions" disabled />
+                        </div>
+                    </div>
+
+                    <!-- INSTRUCTIONS -->
+
+                    <div class="form-group">
+                        <label>Instructions</label>
+
+                        <textarea
+                            id="instructions"
+                            rows="3"
+                            placeholder="Enter exam instructions, rules, and guidelines..."
+                        ></textarea>
+                    </div>
+                </section>
+
+                <!-- SETTINGS -->
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <h3>
+                            <i class="fa-solid fa-sliders"></i>
+                            Exam Settings
+                        </h3>
+                    </div>
+
+                    <div class="settings-grid">
+                        <label class="setting-item">
+                            <input type="checkbox" />
+                            Negative Marking
+                        </label>
+
+                        <label class="setting-item">
+                            <input type="checkbox" />
+                            Shuffle Questions
+                        </label>
+
+                        <label class="setting-item">
+                            <input type="checkbox" />
+                            Shuffle Options
+                        </label>
+
+                        <label class="setting-item">
+                            <input type="checkbox" />
+                            Show Results
+                        </label>
+
+                        <label class="setting-item">
+                            <input type="checkbox" checked />
+                            AI Proctoring
+                        </label>
+                    </div>
+                </section>
+
+                <!-- NEXT STEP MESSAGE -->
+
+                <section class="panel next-step-panel">
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    <div>
+                        <h4>Add Questions After Saving</h4>
+                        <p>Once the exam is saved, you can create and manage questions for this examination.</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script src="js/create-exam.js"></script>
+    </body>
+</html>
+
+

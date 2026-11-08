@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Question Manager | Exam Pro</title>
+
+    <link rel="stylesheet" href="css/commondashboard-design.css">
+    <link rel="stylesheet" href="css/question-manager.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+     <aside class="sidebar" id="sidebar">
+                <div>
+                    <div class="logo">
+                        <h1>EXAM PRO</h1>
+                        <p>Secure • Smart • Reliable</p>
+                    </div>
+
+                    <nav class="sidebar-menu">
+                        <ul>
+                            <li>
+                                <a href="admin-dashboard.html">
+                                    <i class="fa-solid fa-table-columns"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-students.html">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>Students</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-exams.html">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                    <span>Exams</span>
+                                </a>
+                            </li>
+                            <li class="active">
+                            <a href="question-manager.html">
+                                <i class="fa-solid fa-list-check"></i>
+                                <span>Question Manager</span>
+                            </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-question-bank.html">
+                                    <i class="fa-solid fa-book"></i>
+                                    <span>Question Bank</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-schedule.html">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <span>Schedule</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-monitoring.html">
+                                    <i class="fa-solid fa-video"></i>
+                                    <span>Live Monitoring</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-results.html">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Results</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-analytics.html">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                    <span>Analytics</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-reports.html">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>Reports</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-settings.html">
+                                    <i class="fa-solid fa-gear"></i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="ai-card">
+                        <div class="ai-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+
+                        <h3>AI Proctoring</h3>
+
+                        <p>Live monitoring and fraud detection active across all examinations.</p>
+
+                        <a href="#"> View Details → </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-footer">
+                    <a href="#" id="logoutBtn">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </aside>
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <div class="topbar">
+
+                <div class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+
+                <div class="top-right">
+
+                    <div class="notification">
+                        <i class="fa-regular fa-bell"></i>
+                        <span>0</span>
+                    </div>
+
+                    <div class="profile">
+
+                        <div class="profile-avatar">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+
+                        <div class="profile-info">
+                            <h4>Administrator</h4>
+                            <p>Super Admin</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- EXAM HEADER -->
+
+            <section class="exam-header">
+
+                <div>
+
+                    <div class="exam-title-row">
+
+                        <h2 id="examTitleDisplay">
+                            Loading Exam...
+                        </h2>
+
+                        <span class="status-badge"
+                            id="examStatus">
+                            Draft
+                        </span>
+
+                    </div>
+
+                    <p class="exam-meta">
+
+                        <span id="subjectDisplay">
+                            -
+                        </span>
+
+                        <span>•</span>
+
+                        <span id="durationDisplay">
+                            0 Min
+                        </span>
+
+                        <span>•</span>
+
+                        <span id="marksDisplay">
+                            0 Marks
+                        </span>
+
+                        <span>•</span>
+
+                        <span id="questionCount">
+                            0 Questions
+                        </span>
+
+                    </p>
+
+                </div>
+
+                <button
+                    id="publishExamBtn"
+                    class="success-btn">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Publish Exam
+
+                </button>
+
+            </section>
+
+            <!-- MAIN GRID -->
+
+            <section class="question-layout">
+
+                <!-- QUESTION FORM -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <h3>
+                            <i class="fa-solid fa-plus-circle"></i>
+                            Question Editor
+                        </h3>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Question</label>
+
+                        <textarea
+                            id="questionText"
+                            rows="3"
+                            placeholder="Enter question"></textarea>
+
+                    </div>
+
+                    <div class="options-grid">
+
+                        <div class="form-group">
+                            <label>Option A</label>
+                            <input type="text" id="optionA">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Option B</label>
+                            <input type="text" id="optionB">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Option C</label>
+                            <input type="text" id="optionC">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Option D</label>
+                            <input type="text" id="optionD">
+                        </div>
+
+                    </div>
+
+                    <div class="editor-bottom">
+
+                        <div class="form-group">
+
+                            <label>Correct Answer</label>
+
+                            <select id="correctAnswer">
+
+                                <option value="A">Option A</option>
+                                <option value="B">Option B</option>
+                                <option value="C">Option C</option>
+                                <option value="D">Option D</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Marks</label>
+
+                            <input
+                                type="number"
+                                id="questionMarks"
+                                value="1">
+
+                        </div>
+
+                    </div>
+
+                    <div class="editor-actions">
+
+                        <button
+                            id="saveQuestionBtn"
+                            class="primary-btn">
+
+                            <i class="fa-solid fa-plus"></i>
+                            Add Question
+
+                        </button>
+
+                        <button
+                            id="updateQuestionBtn"
+                            class="warning-btn">
+
+                            <i class="fa-solid fa-pen"></i>
+                            Update
+
+                        </button>
+
+                        <button
+                            id="clearFormBtn"
+                            class="secondary-btn">
+
+                            <i class="fa-solid fa-broom"></i>
+                            Clear
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- QUESTION LIST -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <h3>
+                            <i class="fa-solid fa-list"></i>
+                            Question List
+                        </h3>
+
+                    </div>
+
+                    <div id="questionList">
+
+                        <div class="empty-state">
+
+                            <i class="fa-solid fa-circle-question"></i>
+
+                            <h4>
+                                No Questions Added
+                            </h4>
+
+                            <p>
+                                Start by creating your first question.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/question-manager.js"></script>
+
+</body>
+
+</html>

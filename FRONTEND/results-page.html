@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Exam Pro | Results</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/commondashboard-design.css" />
+
+    <link rel="stylesheet" href="css/results-page.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="dashboard-container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar">
+        <div>
+          <div class="logo">
+            <h1>EXAM PRO</h1>
+            <p>Secure • Smart • Reliable</p>
+          </div>
+
+          <nav class="sidebar-menu">
+            <ul>
+              <li>
+                <a href="dashboard.html">
+                  <i class="fa-solid fa-table-columns"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="exams.html">
+                  <i class="fa-solid fa-laptop"></i>
+                  <span>Exams</span>
+                </a>
+              </li>
+
+              <li class="active">
+                <a href="results.html">
+                  <i class="fa-solid fa-chart-line"></i>
+                  <span>Results</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="history.html">
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                  <span>History</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="schedule.html">
+                  <i class="fa-solid fa-calendar-days"></i>
+                  <span>Schedule</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="profile.html">
+                  <i class="fa-solid fa-user-graduate"></i>
+                  <span>Profile</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="notifications.html">
+                  <i class="fa-solid fa-bell"></i>
+                  <span>Notifications</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="help.html">
+                  <i class="fa-solid fa-circle-question"></i>
+                  <span>Help Center</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="settings.html">
+                  <i class="fa-solid fa-gear"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- SYSTEM STATUS -->
+
+        <div class="ai-card">
+          <div class="ai-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+
+          <h3>System Status</h3>
+
+          <p>
+            Exam security services are active and ready. Assessments are
+            protected with AI monitoring.
+          </p>
+
+          <a href="#"> Security Details → </a>
+        </div>
+
+        <div class="sidebar-footer">
+          <a href="#">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+
+      <main class="main-content">
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+          <div class="menu-btn" id="menuToggle" aria-label="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+
+          <div class="top-right">
+            <!-- NOTIFICATIONS -->
+
+            <div
+              class="notification"
+              id="notificationBtn"
+              aria-label="Notifications"
+            >
+              <i class="fa-regular fa-bell"></i>
+
+              <span id="notificationCount">0</span>
+
+              <div class="notification-dropdown" id="notificationDropdown">
+                <h4>Notifications</h4>
+
+                <ul>
+                  <li>New exam assigned</li>
+                  <li>Upcoming exam reminder</li>
+                  <li>Results published</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- PROFILE -->
+
+            <div class="profile" id="profileBtn">
+              <div class="profile-avatar">
+                <i class="fa-solid fa-user-graduate"></i>
+              </div>
+
+              <div class="profile-info">
+                <h4 id="studentName">Loading...</h4>
+                <p>Student Account</p>
+              </div>
+
+              <i class="fa-solid fa-chevron-down"></i>
+
+              <div class="profile-dropdown" id="profileDropdown">
+                <a href="#">
+                  <i class="fa-regular fa-user"></i>
+                  My Profile
+                </a>
+
+                <a href="#">
+                  <i class="fa-solid fa-chart-line"></i>
+                  Results
+                </a>
+
+                <a href="#">
+                  <i class="fa-solid fa-calendar-days"></i>
+                  Exam Schedule
+                </a>
+
+                <a href="#">
+                  <i class="fa-solid fa-gear"></i>
+                  Settings
+                </a>
+
+                <hr />
+
+                <a href="#" class="logout-link">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  Logout
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO -->
+
+        <section class="hero-card">
+          <div class="hero-text">
+            <h2>Your Examination Results</h2>
+
+            <p>Review scores, grades and performance.</p>
+          </div>
+        </section>
+
+        <!-- SUMMARY CARDS -->
+
+        <section class="summary-grid">
+          <div class="summary-card">
+            <h3 id="totalResults">0</h3>
+            <p>Total Exams</p>
+          </div>
+
+          <div class="summary-card">
+            <h3 id="avgScore">0%</h3>
+            <p>Average Score</p>
+          </div>
+
+          <div class="summary-card">
+            <h3 id="highestScore">0%</h3>
+            <p>Highest Score</p>
+          </div>
+
+          <div class="summary-card">
+            <h3 id="passedCount">0</h3>
+            <p>Passed Exams</p>
+          </div>
+        </section>
+
+        <!-- FILTERS -->
+
+        <section class="filters">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input type="text" id="searchInput" placeholder="Search exam" />
+          </div>
+
+          <select id="subjectFilter">
+            <option value="all">All Subjects</option>
+          </select>
+
+          <select id="statusFilter">
+            <option value="all">All Status</option>
+
+            <option value="Pass">Pass</option>
+
+            <option value="Fail">Fail</option>
+          </select>
+        </section>
+
+        <!-- RESULTS TABLE -->
+
+        <section class="panel">
+          <div class="panel-header">
+            <h3>Exam Results</h3>
+
+            <span id="resultCount"> 0 Results </span>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th>Exam</th>
+                  <th>Subject</th>
+                  <th>Date</th>
+                  <th>Score</th>
+                  <th>Grade</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody id="resultsBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="pagination" id="pagination"></section>
+      </main>
+    </div>
+
+    <script src="js/common-dashboard.js"></script>
+    <script src="js/results-page.js"></script>
+  </body>
+</html>

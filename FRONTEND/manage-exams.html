@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Manage Exams | Exam Pro</title>
+
+    <link rel="stylesheet" href="css/commondashboard-design.css" />
+    <link rel="stylesheet" href="css/manage-exams.css" />
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+                <h1>EXAM PRO</h1>
+                <p>Secure • Smart • Reliable</p>
+            </div>
+
+            <nav class="sidebar-menu">
+                <ul>
+
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fa-solid fa-table-columns"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="admin-students.html">
+                            <i class="fa-solid fa-users"></i>
+                            <span>Students</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="create-exam.html">
+                            <i class="fa-solid fa-file-circle-plus"></i>
+                            <span>Create Exam</span>
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="manage-exams.html">
+                            <i class="fa-solid fa-file-lines"></i>
+                            <span>Manage Exams</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="question-manager.html">
+                            <i class="fa-solid fa-list-check"></i>
+                            <span>Question Manager</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="admin-question-bank.html">
+                            <i class="fa-solid fa-book"></i>
+                            <span>Question Bank</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="admin-schedule.html">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>Schedule</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="admin-monitoring.html">
+                            <i class="fa-solid fa-video"></i>
+                            <span>Live Monitoring</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="admin-results.html">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <span>Results</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="admin-analytics.html">
+                            <i class="fa-solid fa-chart-pie"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="admin-reports.html">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fa-solid fa-gear"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+            <div class="ai-card">
+                <div class="ai-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h3>AI Proctoring</h3>
+
+                <p>
+                    Live monitoring and fraud detection active across all examinations.
+                </p>
+
+                <a href="#">
+                    View Details →
+                </a>
+            </div>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div class="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="top-right">
+
+                <div class="notification">
+                    <i class="fa-regular fa-bell"></i>
+                    <span>0</span>
+                </div>
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+
+                    <div class="profile-info">
+                        <h4>Administrator</h4>
+                        <p>Super Admin</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PAGE HEADER -->
+
+        <section class="page-header">
+
+            <div>
+
+                <h2>Manage Exams</h2>
+
+                <p>
+                    View, edit and manage all created examinations.
+                </p>
+
+            </div>
+
+            <div class="header-actions">
+
+                <a href="create-exam.html" class="primary-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Create Exam
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- SEARCH PANEL -->
+
+        <section class="panel">
+
+            <div class="search-toolbar">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="searchExam"
+                        placeholder="Search exam by title or subject..."
+                    />
+
+                </div>
+
+                <select id="statusFilter">
+
+                    <option value="">
+                        All Status
+                    </option>
+
+                    <option value="Draft">
+                        Draft
+                    </option>
+
+                    <option value="Published">
+                        Published
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+        <!-- EXAMS GRID -->
+
+        <section class="exam-grid" id="examGrid">
+
+            <!-- Dynamic Cards -->
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- CARD TEMPLATE EXAMPLE -->
+
+<template id="examCardTemplate">
+
+    <div class="exam-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3>Python</h3>
+
+                <p>Subject: Python</p>
+
+            </div>
+
+            <span class="status published">
+                Published
+            </span>
+
+        </div>
+
+        <div class="exam-meta">
+
+            <span>
+                <i class="fa-regular fa-calendar"></i>
+                26 Aug 2026
+            </span>
+
+            <span>
+                <i class="fa-solid fa-list"></i>
+                5 Questions
+            </span>
+
+        </div>
+
+        <div class="card-actions">
+
+            <button class="action-btn primary">
+                <i class="fa-solid fa-list-check"></i>
+                Manage Questions
+            </button>
+
+            <button class="action-btn">
+                <i class="fa-solid fa-pen"></i>
+                Edit
+            </button>
+
+            <button class="action-btn danger">
+                <i class="fa-solid fa-trash"></i>
+                Delete
+            </button>
+
+        </div>
+
+    </div>
+
+</template>
+
+<script src="js/manage-exams.js"></script>
+
+</body>
+</html>

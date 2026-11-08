@@ -1,0 +1,375 @@
+/* ==========================================
+   HERO SECTION
+========================================== */
+
+.hero-card{
+    position: relative;
+    min-height: 180px;
+    margin-bottom: 100px;
+}
+/* ===================================
+   PAGE IMAGE
+=================================== */
+
+.page-image{
+    position:absolute;
+    top:90px;
+    right:80px;
+    z-index:1;
+}
+
+/* ===================================
+   EXAM PAGE HEADER
+=================================== */
+
+.exam-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    margin-bottom:20px;
+}
+
+.exam-header .hero-text{
+    flex:1;
+}
+
+.exam-header .hero-text h2{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.exam-header .hero-text p{
+    color:#64748b;
+    font-size:14px;
+}
+
+.page-image{
+    flex-shrink:0;
+}
+
+.page-image img{
+    width:180px;
+    height:auto;
+    display:block;
+}
+
+/* ==========================================
+   SEARCH & FILTERS
+========================================== */
+
+.filters{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:12px;
+   
+    margin-bottom:16px;
+}
+
+.search-box{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    padding:0 14px;
+}
+
+.search-box i{
+    color:#94a3b8;
+    font-size:13px;
+}
+
+.search-box input{
+    width:100%;
+    border:none;
+    outline:none;
+    background:none;
+    padding:12px;
+    font-size:13px;
+}
+
+.filters select{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px;
+    font-size:13px;
+    outline:none;
+    cursor:pointer;
+}
+
+/* ==========================================
+   SECTION HEADER
+========================================== */
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+}
+
+.section-header h3{
+    font-size:16px;
+    font-weight:600;
+}
+
+.section-header span{
+    font-size:13px;
+    color:var(--text-light);
+}
+
+/* ==========================================
+   EXAM GRID
+========================================== */
+
+.exam-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+/* ==========================================
+   EXAM CARD
+========================================== */
+
+.exam-card{
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    padding:16px;
+    transition:var(--transition);
+    box-shadow:var(--shadow-sm);
+}
+
+.exam-card:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--shadow-md);
+}
+
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:14px;
+}
+
+.subject-icon{
+    width:50px;
+    height:50px;
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.orange{
+    background:#fff3e8;
+    color:#ff7a00;
+}
+
+.green{
+    background:#edfdf3;
+    color:#16a34a;
+}
+
+.purple{
+    background:#f4e8ff;
+    color:#9333ea;
+}
+
+.blue{
+    background:#eff6ff;
+    color:#2563eb;
+}
+
+.exam-card h3{
+    font-size:15px;
+    margin-bottom:6px;
+    color:var(--text);
+}
+
+.exam-card p{
+    font-size:12px;
+    color:var(--text-light);
+    line-height:1.5;
+    margin-bottom:14px;
+}
+
+/* ==========================================
+   STATUS
+========================================== */
+
+.status{
+    padding:5px 10px;
+    border-radius:999px;
+    font-size:11px;
+    font-weight:600;
+}
+
+.status.live{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.status.upcoming{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.status.completed{
+    background:#dcfce7;
+    color:#16a34a;
+}
+
+/* ==========================================
+   CARD META
+========================================== */
+
+.card-meta{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:14px;
+
+    font-size:12px;
+    color:#64748b;
+}
+
+.card-meta span{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+/* ==========================================
+   CARD FOOTER
+========================================== */
+
+.card-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding-top:12px;
+    border-top:1px solid #f1f5f9;
+}
+
+.card-footer span{
+    font-size:12px;
+    color:#64748b;
+}
+
+.card-footer button{
+    border:none;
+    background:#eff6ff;
+    color:#2563eb;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    font-size:12px;
+    font-weight:600;
+
+    cursor:pointer;
+    transition:var(--transition);
+}
+
+.card-footer button:hover{
+    background:#2563eb;
+    color:#fff;
+}
+
+.result-btn{
+    background:#dcfce7 !important;
+    color:#16a34a !important;
+}
+
+/* ==========================================
+   PAGINATION
+========================================== */
+
+.pagination{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+
+    margin-top:20px;
+}
+
+.pagination button{
+    width:36px;
+    height:36px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#fff;
+    border:1px solid #e2e8f0;
+
+    cursor:pointer;
+    transition:var(--transition);
+}
+
+.pagination button:hover{
+    border-color:var(--primary);
+}
+
+.pagination button.active{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1200px){
+
+    .exam-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .filters{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media (max-width:768px){
+
+    .filters{
+        grid-template-columns:1fr;
+    }
+
+    .exam-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-card{
+        flex-direction:column;
+        text-align:center;
+        gap:20px;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+}
+@media(max-width:768px){
+
+    .exam-header{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .page-image img{
+        width:140px;
+    }
+
+}

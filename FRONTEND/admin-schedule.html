@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Schedule | Exam Pro</title>
+
+        <link rel="stylesheet" href="css/commondashboard-design.css" />
+        <link rel="stylesheet" href="css/admin-schedule.css" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <div class="dashboard-container">
+            <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+            <aside class="sidebar" id="sidebar">
+                <div>
+                    <div class="logo">
+                        <h1>EXAM PRO</h1>
+                        <p>Secure • Smart • Reliable</p>
+                    </div>
+
+                    <nav class="sidebar-menu">
+                        <ul>
+                            <li>
+                                <a href="admin-dashboard.html">
+                                    <i class="fa-solid fa-table-columns"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Students.html">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>Students</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="create-exam.html">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                    <span>Create Exams</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="manage-exams.html">
+                                    <i class="fa-solid fa-list-check"></i>
+                                    <span>Manage Exams</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="question-manager.html">
+                                    <i class="fa-solid fa-book-open"></i>
+                                    <span>Question Manager</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-question-bank.html">
+                                    <i class="fa-solid fa-book"></i>
+                                    <span>Question Bank</span>
+                                </a>
+                            </li>
+
+                            <li class="active">
+                                <a href="admin-schedule.html">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <span>Schedule</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-monitoring.html">
+                                    <i class="fa-solid fa-video"></i>
+                                    <span>Live Monitoring</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-results.html">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Results</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-analytics.html">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                    <span>Analytics</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-reports.html">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>Reports</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="admin-settings.html">
+                                    <i class="fa-solid fa-gear"></i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="ai-card">
+                        <div class="ai-icon">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+
+                        <h3>Schedule Center</h3>
+
+                        <p>Manage upcoming examinations, schedules and student events.</p>
+
+                        <a href="#"> View Calendar → </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-footer">
+                    <a href="#" id="logoutBtn">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+            <main class="main-content">
+                <!-- TOPBAR -->
+
+                <div class="topbar">
+                    <div class="menu-btn" id="menuToggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+
+                    <div class="top-right">
+                        <div class="notification">
+                            <i class="fa-regular fa-bell"></i>
+                            <span>0</span>
+                        </div>
+
+                        <div class="profile">
+                            <div class="profile-avatar">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+
+                            <div class="profile-info">
+                                <h4>Administrator</h4>
+                                <p>Super Admin</p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE HEADER -->
+
+                <section class="page-header">
+                    <div>
+                        <h2>
+                            <i class="fa-solid fa-calendar-days"></i>
+                            Exam Schedule
+                        </h2>
+
+                        <p>Manage examination calendar, upcoming tests and schedules.</p>
+                    </div>
+
+                    <div class="header-actions">
+                        <button class="outline-btn">
+                            <i class="fa-solid fa-calendar"></i>
+                            Calendar View
+                        </button>
+
+                        <a href="create-exam.html" class="primary-btn">
+                            <i class="fa-solid fa-plus"></i>
+                            Add New Exam
+                        </a>
+                    </div>
+                </section>
+
+                <!-- STATS -->
+
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon green">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+
+                            <div class="stat-content">
+                                <h2 id="upcomingExams">0</h2>
+
+                                <p>Upcoming Exams</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon green">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="upcomingExams">15</h2>
+                                <p>Upcoming Exams</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon orange">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="liveExams">3</h2>
+                                <p>Live Exams</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon purple">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="completedExams">10</h2>
+                                <p>Completed Exams</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CALENDAR + EVENTS -->
+
+                <section class="schedule-grid">
+                    <!-- CALENDAR -->
+                    <div class="panel calendar-panel">
+                        <div class="panel-header">
+                            <div class="calendar-title">
+                                <h3 id="calendarMonthYear">Loading...</h3>
+
+                                <span id="examCountBadge"> 0 Exams </span>
+                            </div>
+
+                            <div class="calendar-controls">
+                                <button id="prevMonth" class="calendar-btn" title="Previous Month">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+
+                                <button id="todayBtn" class="calendar-btn today-btn">Today</button>
+
+                                <button id="nextMonth" class="calendar-btn" title="Next Month">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="calendar-wrapper">
+                            <div class="calendar-header">
+                                <span>Sun</span>
+                                <span>Mon</span>
+                                <span>Tue</span>
+                                <span>Wed</span>
+                                <span>Thu</span>
+                                <span>Fri</span>
+                                <span>Sat</span>
+                            </div>
+
+                            <div class="calendar-grid" id="calendarGrid">
+                                <!-- Generated by admin-schedule.js -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TODAY EVENTS -->
+
+                    <div class="panel today-events">
+                        <div class="panel-header">
+                            <h3>Today's Events</h3>
+                        </div>
+
+                        <div id="todayEvents"></div>
+                    </div>
+                </section>
+
+                <!-- UPCOMING EXAMS -->
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <h3>Upcoming Exams</h3>
+
+                        <a href="#"> View All </a>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Exam Name</th>
+                                    <th>Subject</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Duration</th>
+                                    <th>Students</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="scheduleTableBody">
+                                <!-- Exam rows are loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- QUICK ACTIONS -->
+
+                <section class="quick-actions">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+
+                        <div class="action-grid">
+                            <a href="create-exam.html" class="action-card">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Add New Exam</span>
+                            </a>
+
+                            <a href="manage-exams.html" class="action-card">
+                                <i class="fa-solid fa-calendar-check"></i>
+                                <span>Manage Schedule</span>
+                            </a>
+
+                            <a href="#" class="action-card">
+                                <i class="fa-solid fa-file-import"></i>
+                                <span>Import Exams</span>
+                            </a>
+
+                            <a href="admin-reports.html" class="action-card">
+                                <i class="fa-solid fa-chart-column"></i>
+                                <span>Exam Reports</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script src="js/admin-schedule.js"></script>
+    </body>
+</html>
+
+
+
+
+
