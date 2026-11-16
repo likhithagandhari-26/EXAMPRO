@@ -1,5 +1,21 @@
 const API_BASE = "http://127.0.0.1:8000/api/exams";
 
+function getAuthHeaders() {
+    const token =
+        localStorage.getItem("access_token") ||
+        localStorage.getItem("admin_token");
+
+    if (!token) {
+        alert("Admin session expired. Please log in again.");
+        window.location.href = "login.html";
+        return null;
+    }
+
+    return {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+    };
+}
 let examId = null;
 let selectedQuestionId = null;
 let examSettings = {};
@@ -40,7 +56,8 @@ async function loadExam() {
     try {
 
         const response = await fetch(
-            `${API_BASE}/${examId}/`
+            `${API_BASE}/${examId}/`,
+            { headers: getAuthHeaders() || {} }
         );
 
         if (!response.ok) {
@@ -103,7 +120,8 @@ async function loadQuestions() {
 
         const response =
             await fetch(
-                `${API_BASE}/${examId}/questions/`
+                `${API_BASE}/${examId}/questions/`,
+                { headers: getAuthHeaders() || {} }
             );
 
         const questions =
@@ -345,7 +363,6 @@ async function addQuestion() {
 
         option_c:
             optionC,
-
         option_d:
             optionD,
 
@@ -361,20 +378,25 @@ async function addQuestion() {
         console.log("Exam ID:", examId);
         console.log("Payload:", payload);
 
+        const headers = getAuthHeaders();
+
+        if (!headers) return;
+
         const response = await fetch(
+  
             `${API_BASE}/${examId}/questions/add/`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-                    body:
-                        JSON.stringify(
-                            payload
-                        )
-                }
-            );
+    
+            {
+       
+                method: "POST",
+       
+                headers: headers,
+       
+                body: JSON.stringify(payload)
+    
+            }
+
+        );
 
         const result =
             await response.json();
@@ -571,10 +593,7 @@ async function updateQuestion() {
                 `${API_BASE}/${examId}/questions/${selectedQuestionId}/update/`,
                 {
                     method: "PUT",
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
+                    headers: getAuthHeaders() || {},
                     body:
                         JSON.stringify(
                             payload
@@ -618,7 +637,8 @@ async function (questionId) {
             await fetch(
                 `${API_BASE}/${examId}/questions/${questionId}/delete/`,
                 {
-                    method: "DELETE"
+                    method: "DELETE",
+                    headers: getAuthHeaders() || {}
                 }
             );
 
@@ -766,10 +786,7 @@ async function publishExam() {
                 `${API_BASE}/${examId}/update/`,
                 {
                     method: "PUT",
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
+                    headers: getAuthHeaders() || {},
                     body:
                         JSON.stringify({
                             status:

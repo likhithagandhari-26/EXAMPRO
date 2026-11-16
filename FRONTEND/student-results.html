@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View your Exam Pro examination results and performance.">
+    <title>My Results | Exam Pro</title>
+
+    <!-- Keep the existing shared dashboard stylesheet. -->
+    <link rel="stylesheet" href="css/commondashboard-design.css">
+    <link rel="stylesheet" href="css/student-results.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="dashboard-container">
+    <!-- Student sidebar: kept consistent with the existing student dashboard. -->
+    <aside class="sidebar" id="sidebar">
+        <div>
+            <div class="logo">
+                <h1>EXAM PRO</h1>
+                <p>Secure • Smart • Reliable</p>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Student navigation">
+                <ul>
+                    <li><a href="student-dashboard.html"><i class="fa-solid fa-table-columns"></i><span>Dashboard</span></a></li>
+                    <li><a href="student-exams.html"><i class="fa-solid fa-laptop"></i><span>Exams</span></a></li>
+                    <li class="active"><a href="student-results.html" aria-current="page"><i class="fa-solid fa-chart-line"></i><span>Results</span></a></li>
+                    <li><a href="student-history.html"><i class="fa-solid fa-clock-rotate-left"></i><span>History</span></a></li>
+                    <li><a href="student-schedule.html"><i class="fa-solid fa-calendar-days"></i><span>Schedule</span></a></li>
+                    
+                </ul>
+            </nav>
+
+            <div class="ai-card">
+                <div class="ai-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Exam Security</h3>
+                <p>AI-powered proctoring helps ensure fair and secure examinations.</p>
+                <a href="#" aria-label="Security details">Security Details <span aria-hidden="true">→</span></a>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <!-- Shared student topbar -->
+        <header class="topbar">
+            <button class="menu-btn" id="menuToggle" type="button" aria-label="Toggle sidebar">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="top-right">
+                <div class="notification" id="notificationBtn" role="button" tabindex="0" aria-label="Notifications">
+                    <i class="fa-regular fa-bell"></i>
+                    <span id="notificationCount">0</span>
+                    <div class="notification-dropdown" id="notificationDropdown">
+                        <h4>Notifications</h4>
+                        <ul id="notificationList"><li>No new notifications</li></ul>
+                    </div>
+                </div>
+
+                <div class="profile" id="profileBtn" role="button" tabindex="0" aria-label="Student profile menu">
+                    <div class="profile-avatar"><i class="fa-solid fa-user-graduate"></i></div>
+                    <div class="profile-info">
+                        <h4 id="studentName">Student</h4>
+                        <p id="studentRole">Student Account</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <a href="student-profile.html"><i class="fa-regular fa-user"></i>My Profile</a>
+                        <a href="student-results.html"><i class="fa-solid fa-chart-line"></i>My Results</a>
+                        <hr>
+                        <a href="#" class="logout-link" id="logoutDropdownBtn"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="results-page">
+            <div class="results-hero">
+                <div class="results-hero-copy">
+                    <span class="eyebrow"><i class="fa-solid fa-graduation-cap"></i> STUDENT PERFORMANCE</span>
+                    <h1>My Results</h1>
+                    <p>Review your examination results and track your academic progress.</p>
+                </div>
+                <div class="results-hero-art" aria-hidden="true">
+                    <div class="hero-orbit orbit-one"></div>
+                    <div class="hero-orbit orbit-two"></div>
+                    <div class="hero-trophy"><i class="fa-solid fa-trophy"></i></div>
+                    <span class="hero-spark spark-one">✦</span>
+                    <span class="hero-spark spark-two">✧</span>
+                </div>
+            </div>
+            <div class="latest-banner" id="latestBanner" hidden>
+                <i class="fa-solid fa-circle-check"></i>
+                <div><strong>Exam submitted successfully</strong><span id="latestBannerText"></span></div>
+            </div>
+
+            <div class="page-section-heading">
+                <div><h2>Performance Overview</h2><p>Your results at a glance</p></div>
+                <span class="updated-label" id="lastUpdated">Awaiting results</span>
+            </div>
+
+            <section class="stats-grid" aria-label="Performance summary">
+                <article class="stat-card">
+                    <div class="stat-icon stat-blue"><i class="fa-solid fa-file-circle-check"></i></div>
+                    <div><p>Exams Attempted</p><h3 id="examsAttempted">—</h3><small>Completed examinations</small></div>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-icon stat-green"><i class="fa-solid fa-chart-line"></i></div>
+                    <div><p>Overall Average</p><h3 id="overallAverage">—</h3><small>Across graded exams</small></div>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-icon stat-purple"><i class="fa-solid fa-star"></i></div>
+                    <div><p>Highest Score</p><h3 id="highestScore">—</h3><small>Best percentage</small></div>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-icon stat-orange"><i class="fa-solid fa-circle-check"></i></div>
+                    <div><p>Passed Exams</p><h3 id="passedExams">—</h3><small id="passRateText">Published results</small></div>
+                </article>
+            </section>
+
+            <section class="results-panel performance-panel">
+                <div class="panel-heading">
+                    <div><h2>Performance Trend</h2><p>Percentage scored in your recent graded exams</p></div>
+                    <span class="panel-icon"><i class="fa-solid fa-chart-area"></i></span>
+                </div>
+                <div class="chart-wrap" id="chartWrap">
+                    <canvas id="performanceChart" aria-label="Exam performance trend chart" role="img"></canvas>
+                    <div class="chart-empty" id="chartEmpty">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <strong>Performance chart will appear here</strong>
+                        <span>Complete an exam with a published result to see your progress.</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results-panel table-panel">
+                <div class="panel-heading results-table-heading">
+                    <div><h2>Exam Results</h2><p>All examination results available to your account</p></div>
+                    <button class="refresh-btn" id="refreshResults" type="button"><i class="fa-solid fa-rotate"></i> Refresh</button>
+                </div>
+
+                <div class="table-toolbar">
+                    <label class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" id="resultSearch" placeholder="Search exam or subject..." autocomplete="off">
+                    </label>
+                    <select id="statusFilter" aria-label="Filter by result status">
+                        <option value="all">All Results</option>
+                        <option value="passed">Passed</option>
+                        <option value="failed">Failed</option>
+                        <option value="pending">Pending</option>
+                    </select>
+                    <select id="sortFilter" aria-label="Sort results">
+                        <option value="recent">Latest Attempt</option>
+                        <option value="oldest">Oldest Attempt</option>
+                        <option value="highest">Highest Score</option>
+                        <option value="lowest">Lowest Score</option>
+                    </select>
+                </div>
+
+                <div class="table-scroll">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Exam Name</th>
+                                <th>Subject</th>
+                                <th>Date of Attempt</th>
+                                <th>Score</th>
+                                <th>Percentage</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTableBody">
+                            <tr><td colspan="7" class="table-message"><i class="fa-solid fa-spinner fa-spin"></i> Loading your results...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span id="resultsCount">Showing 0 results</span>
+                    <div class="pagination">
+                        <button id="previousPage" type="button" aria-label="Previous page" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                        <span id="pageIndicator">Page 1</span>
+                        <button id="nextPage" type="button" aria-label="Next page" disabled><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="results-note"><i class="fa-solid fa-circle-info"></i><span>Only results released by your examination administrator are displayed here. Select <strong>View Details</strong> to see an individual result breakdown.</span></div>
+        </section>
+    </main>
+</div>
+
+<script src="js/student-results.js"></script>
+</body>
+</html>

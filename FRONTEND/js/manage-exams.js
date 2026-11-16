@@ -5,6 +5,15 @@
 const API_BASE =
     "http://127.0.0.1:8000/api/exams";
 
+// Admin requests must carry the login token, otherwise the API answers 401/403.
+function getAuthHeaders() {
+    const token =
+        localStorage.getItem("access_token") ||
+        localStorage.getItem("admin_token");
+
+    return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
 let allExams = [];
 
 /* ======================================
@@ -35,12 +44,16 @@ async function loadExams() {
     try {
 
         const response =
-            await fetch(API_BASE);
+            await fetch(API_BASE, {
+                headers: getAuthHeaders()
+            });
 
         if (!response.ok) {
 
             throw new Error(
-                "Failed to load exams"
+                response.status === 401 || response.status === 403
+                    ? "Please log in as an administrator to view exams."
+                    : "Failed to load exams"
             );
         }
 
@@ -56,7 +69,7 @@ async function loadExams() {
         console.error(error);
 
         showEmptyState(
-            "Unable to load exams"
+            error.message || "Unable to load exams"
         );
     }
 }
@@ -126,7 +139,7 @@ function renderExams(exams) {
 
                 <span>
                     <i class="fa-regular fa-calendar"></i>
-                    ${exam.exam_date || "-"}
+                    ${exam.exam_date || "-"}${exam.exam_time ? " • " + exam.exam_time : ""}
                 </span>
 
                 <span>
@@ -334,7 +347,8 @@ window.deleteExam = async function (examId) {
         const response = await fetch(
             `${API_BASE}/${examId}/delete/`,
             {
-                method: "DELETE"
+                method: "DELETE",
+                    headers: getAuthHeaders()
             }
         );
 

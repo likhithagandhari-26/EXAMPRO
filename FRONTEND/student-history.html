@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Exam History | Exam Pro</title>
+
+    <link rel="stylesheet" href="css/commondashboard-design.css">
+    <link rel="stylesheet" href="css/student-history.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div>
+            <div class="logo">
+                <h1>EXAM PRO</h1>
+                <p>Secure • Smart • Reliable</p>
+            </div>
+
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="student-dashboard.html"><i class="fa-solid fa-table-columns"></i><span>Dashboard</span></a></li>
+                    <li><a href="student-exams.html"><i class="fa-solid fa-laptop"></i><span>Exams</span></a></li>
+                    <li><a href="student-results.html"><i class="fa-solid fa-chart-line"></i><span>Results</span></a></li>
+                    <li class="active"><a href="student-history.html"><i class="fa-solid fa-clock-rotate-left"></i><span>History</span></a></li>
+                    <li><a href="student-schedule.html"><i class="fa-solid fa-calendar-days"></i><span>Schedule</span></a></li>
+                    
+                </ul>
+            </nav>
+
+            <div class="ai-card">
+                <div class="ai-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Exam Security</h3>
+                <p>AI-powered proctoring helps ensure fair and secure examinations.</p>
+                <a href="#">Security Details →</a>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <button class="menu-btn" id="menuToggle" type="button">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="top-right">
+
+                <div class="notification" id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span id="notificationCount">0</span>
+
+                    <div class="notification-dropdown" id="notificationDropdown">
+                        <h4>Notifications</h4>
+                        <ul id="notificationList">
+                            <li>No new notifications</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="profile" id="profileBtn">
+                    <div class="profile-avatar">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+
+                    <div class="profile-info">
+                        <h4 id="studentName">Student</h4>
+                        <p id="studentRole">Student Account</p>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <a href="student-profile.html">
+                            <i class="fa-regular fa-user"></i> My Profile
+                        </a>
+                        <a href="student-results.html">
+                            <i class="fa-solid fa-chart-line"></i> My Results
+                        </a>
+                        <hr>
+                        <a href="#" id="logoutDropdownBtn">
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- HISTORY PAGE -->
+        <section class="history-page">
+
+            <!-- HERO -->
+            <section class="history-hero">
+                <div class="history-hero-copy">
+                    <span class="history-eyebrow">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        STUDENT ACTIVITY RECORD
+                    </span>
+
+                    <h1>My Exam History</h1>
+
+                    <p>
+                        Track your examination activities, participation,
+                        and submission records in one place.
+                    </p>
+
+                    <div class="hero-meta">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Your activity records are linked to your student account.</span>
+                    </div>
+                </div>
+
+                <div class="history-hero-art">
+                    <div class="history-orbit orbit-a"></div>
+                    <div class="history-orbit orbit-b"></div>
+                    <div class="history-hero-icon">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <span class="history-spark spark-a">✦</span>
+                    <span class="history-spark spark-b">✧</span>
+                </div>
+            </section>
+
+            <!-- SUMMARY HEADING -->
+            <div class="section-heading">
+                <div>
+                    <h2>Activity Summary</h2>
+                    <p>A quick overview of your recorded examination activity</p>
+                </div>
+                <span class="last-updated" id="lastUpdated">
+                    Awaiting activity records
+                </span>
+            </div>
+
+            <!-- SUMMARY CARDS -->
+            <section class="activity-stats">
+
+                <article class="activity-stat-card">
+                    <div class="activity-stat-icon icon-blue">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <div>
+                        <p>Total Activities</p>
+                        <h3 id="totalActivities">—</h3>
+                        <small>Recorded events</small>
+                    </div>
+                </article>
+
+                <article class="activity-stat-card">
+                    <div class="activity-stat-icon icon-indigo">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <div>
+                        <p>Exams Started</p>
+                        <h3 id="examsStarted">—</h3>
+                        <small>Recorded start events</small>
+                    </div>
+                </article>
+
+                <article class="activity-stat-card">
+                    <div class="activity-stat-icon icon-green">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </div>
+                    <div>
+                        <p>Exams Submitted</p>
+                        <h3 id="examsSubmitted">—</h3>
+                        <small>Submitted or auto-submitted</small>
+                    </div>
+                </article>
+
+                <article class="activity-stat-card">
+                    <div class="activity-stat-icon icon-amber">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <div>
+                        <p>Interrupted Attempts</p>
+                        <h3 id="interruptedAttempts">—</h3>
+                        <small>Only when recorded by the system</small>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- RECENT ACTIVITY TIMELINE -->
+            <section class="history-panel timeline-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Recent Activity</h2>
+                        <p>Your latest recorded examination events</p>
+                    </div>
+                    <span class="panel-heading-icon">
+                        <i class="fa-solid fa-timeline"></i>
+                    </span>
+                </div>
+
+                <div class="timeline-list" id="activityTimeline">
+                    <div class="history-state">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        <strong>Loading activity</strong>
+                        <span>Please wait while your records are retrieved.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COMPLETE ACTIVITY LOG -->
+            <section class="history-panel log-panel">
+
+                <div class="panel-heading log-heading">
+                    <div>
+                        <h2>Complete Activity Log</h2>
+                        <p>Review and filter your examination participation records</p>
+                    </div>
+
+                    <button class="history-refresh-btn" id="refreshHistory" type="button">
+                        <i class="fa-solid fa-rotate"></i> Refresh
+                    </button>
+                </div>
+
+                <!-- FILTERS -->
+                <div class="history-toolbar">
+
+                    <label class="history-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input
+                            type="search"
+                            id="historySearch"
+                            placeholder="Search exam or subject..."
+                        >
+                    </label>
+
+                    <select id="activityTypeFilter">
+                        <option value="all">All Activities</option>
+                        <option value="started">Exam Started</option>
+                        <option value="resumed">Exam Resumed</option>
+                        <option value="submitted">Submitted</option>
+                        <option value="auto_submitted">Auto Submitted</option>
+                        <option value="interrupted">Interrupted</option>
+                        <option value="missed">Missed</option>
+                    </select>
+
+                    <input type="date" id="dateFrom" title="From date">
+                    <input type="date" id="dateTo" title="To date">
+
+                    <select id="historySort">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+
+                </div>
+
+                <!-- TABLE -->
+                <div class="history-table-scroll">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Examination</th>
+                                <th>Subject</th>
+                                <th>Activity</th>
+                                <th>Date &amp; Time</th>
+                                <th>Duration</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="historyTableBody">
+                            <tr>
+                                <td colspan="6" class="history-table-message">
+                                    Loading your activity history...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PAGINATION -->
+                <div class="history-table-footer">
+                    <span id="historyCount">Showing 0 activities</span>
+
+                    <div class="history-pagination">
+                        <button id="historyPrevious" type="button" disabled>
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <span id="historyPageIndicator">Page 1</span>
+
+                        <button id="historyNext" type="button" disabled>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- INFORMATION NOTE -->
+            <div class="history-note">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>
+                    This page displays activity events recorded by Exam Pro.
+                    Events such as interruptions or missed exams appear only
+                    when the backend explicitly records them.
+                    For marks, percentages, and pass status, visit
+                    <a href="student-results.html">My Results</a>.
+                </span>
+            </div>
+
+        </section>
+    </main>
+</div>
+
+<script src="js/student-history.js"></script>
+</body>
+</html>

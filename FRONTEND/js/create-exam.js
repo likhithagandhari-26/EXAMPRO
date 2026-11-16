@@ -31,6 +31,17 @@ const totalQuestions = document.getElementById("totalQuestions");
 
 const examDate = document.getElementById("examDate");
 
+const examTime = document.getElementById("examTime");
+
+// Exam settings checkboxes (field name the backend expects -> element)
+const settingInputs = {
+    negative_marking: document.getElementById("negativeMarking"),
+    shuffle_questions: document.getElementById("shuffleQuestions"),
+    shuffle_options: document.getElementById("shuffleOptions"),
+    show_results: document.getElementById("showResults"),
+    ai_proctoring: document.getElementById("aiProctoring"),
+};
+
 const instructions = document.getElementById("instructions");
 
 const saveDraftBtn = document.getElementById("saveDraftBtn");
@@ -155,6 +166,8 @@ function attachChangeListeners() {
         totalMarks,
         totalQuestions,
         examDate,
+        examTime,
+        ...Object.values(settingInputs),
         instructions,
         enableDuration,
         enableMarks,
@@ -309,10 +322,23 @@ async function saveExam() {
 
         exam_date: examDate.value || null,
 
-        instructions: instructions.value.trim(),
+        exam_time: examTime && examTime.value ? examTime.value : null,
 
-        status: "Draft",
+        instructions: instructions.value.trim(),
     };
+
+    // Exam settings (only the checkboxes that exist on the page)
+    Object.entries(settingInputs).forEach(([field, input]) => {
+        if (input) {
+            examData[field] = input.checked;
+        }
+    });
+
+    // Only a NEW exam starts as a draft. Sending "Draft" on every update
+    // would silently un-publish an exam each time it is edited.
+    if (!isEditMode) {
+        examData.status = "Draft";
+    }
 
     try {
         isSaving = true;
@@ -528,7 +554,7 @@ Status: ${response.status}`
 
         subject.value = exam.subject || "";
 
-        enableDuration.checked = Boolean(exam.is_timed);
+        enableDuration.checked = Boolean(exam.is_timed ?? exam.duration);
 
         duration.disabled = !enableDuration.checked;
 
@@ -546,7 +572,17 @@ Status: ${response.status}`
 
         totalQuestions.value = exam.total_questions ?? "";
 
-        examDate.value = exam.exam_date || "";
+        examDate.value = toDateInputValue(exam.exam_date);
+
+        if (examTime) {
+            examTime.value = exam.exam_time || "";
+        }
+
+        Object.entries(settingInputs).forEach(([field, input]) => {
+            if (input && exam[field] !== undefined) {
+                input.checked = Boolean(exam[field]);
+            }
+        });
 
         instructions.value = exam.instructions || "";
 
@@ -627,6 +663,17 @@ function clearForm() {
 
     examDate.value = "";
 
+    if (examTime) {
+        examTime.value = "";
+    }
+
+    Object.entries(settingInputs).forEach(([field, input]) => {
+        if (input) {
+            // same defaults as the page: Show Results and AI Proctoring on
+            input.checked = field === "show_results" || field === "ai_proctoring";
+        }
+    });
+
     instructions.value = "";
 
     currentExamId = null;
@@ -658,4 +705,24 @@ function clearForm() {
     }
 
     updatePageMode();
+}
+
+// ======================================
+// DATE HELPER
+// An <input type="date"> only accepts YYYY-MM-DD. Older exams may hold
+// DD-MM-YYYY, so convert either form.
+// ======================================
+
+function toDateInputValue(value) {
+    if (!value) return "";
+
+    const text = String(value);
+
+    let match = text.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (match) return `${match[1]}-${match[2]}-${match[3]}`;
+
+    match = text.match(/^(\d{2})[-/.](\d{2})[-/.](\d{4})/);
+    if (match) return `${match[3]}-${match[2]}-${match[1]}`;
+
+    return "";
 }

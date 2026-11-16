@@ -10,25 +10,36 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
+# ==========================================
+# CORE
+# ==========================================
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l&r#7z6l(i!d%^ha7da1__nispc*(lr0gkjr(2_7%hor(0y6y='
+# This key also signs your login tokens (JWT). For production, set the
+# DJANGO_SECRET_KEY environment variable to a new random value.
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-l&r#7z6l(i!d%^ha7da1__nispc*(lr0gkjr(2_7%hor(0y6y=",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Set DJANGO_DEBUG=False in production.
+DEBUG = os.environ.get("DJANGO_DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
-# Application definition
+# ==========================================
+# APPLICATIONS
+# ==========================================
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,7 +53,8 @@ INSTALLED_APPS = [
     'authentication',
     'exams',
     'students',
-    "results",
+    'results',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -77,8 +89,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'exampro.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
+# ==========================================
+# DATABASE (SQLite: Django admin + contact messages.
+# Students, exams and results live in MongoDB.)
+# ==========================================
 
 DATABASES = {
     'default': {
@@ -88,8 +102,9 @@ DATABASES = {
 }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
+# ==========================================
+# PASSWORD VALIDATION
+# ==========================================
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -107,29 +122,83 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/6.0/topics/i18n/
+# ==========================================
+# INTERNATIONALIZATION
+# ==========================================
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
+# ==========================================
+# STATIC FILES
+# ==========================================
 
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
+
+# ==========================================
+# CORS
+# ==========================================
+
+# Development: any origin may call the API.
+# Production: only the origins listed below.
+CORS_ALLOW_ALL_ORIGINS = DEBUG
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    # "https://your-frontend-domain.com",
+]
+
+
+# ==========================================
+# REST FRAMEWORK + JWT
+# ==========================================
 
 REST_FRAMEWORK = {
+    # Reads "Authorization: Bearer <access token>" and builds the user
+    # (role, email, name) from the token's claims.
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'authentication.auth.MongoJWTAuthentication',
+    ],
+
+    # Each exam / student view sets its own permission (admin, student).
+    # Switch this to IsAuthenticated once every endpoint, including the
+    # results app, sends and checks the token.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
 }
+
+SIMPLE_JWT = {
+    # simplejwt's default is only 5 minutes. Keep it long enough for an exam.
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=3),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
+
+# ==========================================
+# EMAIL (contact form)
+# ==========================================
+
+if DEBUG:
+    # Development: emails print in the terminal, no SMTP needed
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = os.environ.get("MAIL_USER", "")
+    EMAIL_HOST_PASSWORD = os.environ.get("MAIL_PASS", "")  # Gmail App Password
+
+DEFAULT_FROM_EMAIL = "Exam Pro <yourgmail@gmail.com>"
+CONTACT_RECEIVER_EMAIL = "support@exampro.com"   # where student messages are sent

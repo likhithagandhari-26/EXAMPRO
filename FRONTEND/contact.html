@@ -84,7 +84,9 @@
                 </div>
             </div>
 
-            <form>
+            <form id="contactForm" data-url="{% url 'contact_submit' %}" novalidate>
+
+        
 
                 <div class="form-row">
 
@@ -92,7 +94,11 @@
                         <i class="fa-regular fa-user"></i>
                         <input
                             type="text"
+                            name="name"
                             placeholder="Your Name"
+                            maxlength="100"
+                            autocomplete="name"
+                            required
                         />
                     </div>
 
@@ -100,7 +106,10 @@
                         <i class="fa-regular fa-envelope"></i>
                         <input
                             type="email"
+                            name="email"
                             placeholder="Your Email"
+                            autocomplete="email"
+                            required
                         />
                     </div>
 
@@ -110,23 +119,42 @@
                     <i class="fa-regular fa-file-lines"></i>
                     <input
                         type="text"
+                        name="subject"
                         placeholder="Subject"
+                        maxlength="200"
+                        required
                     />
                 </div>
 
                 <div class="input-group textarea-group">
                     <textarea
+                        name="message"
                         placeholder="Write your message here..."
+                        maxlength="2000"
+                        required
                     ></textarea>
                 </div>
+
+                <!-- Honeypot: hidden from humans, bots tend to fill it -->
+                <input
+                    type="text"
+                    name="website"
+                    class="hp-field"
+                    tabindex="-1"
+                    autocomplete="off"
+                    aria-hidden="true"
+                />
 
                 <button
                     type="submit"
                     class="primary-btn"
+                    id="submitBtn"
                 >
                     <i class="fa-solid fa-paper-plane"></i>
-                    Send Message
+                    <span>Send Message</span>
                 </button>
+
+                <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
 
             </form>
 
@@ -159,7 +187,7 @@
 
                 <div>
                     <h4>Phone</h4>
-                    <span>+91 98765 43210</span>
+                    <span>+91 xxxxx xxxxx</span>
                 </div>
             </div>
 
@@ -185,9 +213,6 @@
 
     </section>
 
-
-
-
     <!-- ================= FOOTER ================= -->
 
     <footer>
@@ -196,6 +221,7 @@
 
 </div>
 
+<script src="{% static 'js/contact.js' %}"></script>
+
 </body>
 </html>
-

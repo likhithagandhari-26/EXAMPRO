@@ -343,3 +343,10 @@
         padding:28px 20px;
     }
 }
+.card {
+    transition: transform 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}

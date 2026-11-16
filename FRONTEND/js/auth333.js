@@ -1,27 +1,61 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const loginTab =
-        document.getElementById("loginTab");
+    const API = "http://127.0.0.1:8000/api/auth";
 
-    const registerTab =
-        document.getElementById("registerTab");
+    const STUDENT_DASHBOARD = "student-dashboard.html";
+    const ADMIN_DASHBOARD = "admin-dashboard.html";
 
-    const tabContainer =
-        document.querySelector(".tab-container");
+    const loginTab = document.getElementById("loginTab");
+    const registerTab = document.getElementById("registerTab");
+    const tabContainer = document.querySelector(".tab-container");
 
-    const loginForm =
-        document.querySelector(".login-form");
+    const loginForm = document.querySelector(".login-form");
+    const registerForm = document.querySelector(".register-form");
+    const adminForm = document.querySelector(".admin-form");
 
-    const registerForm =
-        document.querySelector(".register-form");
-
-    const adminForm =
-        document.querySelector(".admin-form");
-
-    const roleCards =
-        document.querySelectorAll(".role-card");
+    const roleCards = document.querySelectorAll(".role-card");
 
     let selectedRole = "student";
+
+    // ==============================
+    // HELPERS
+    // ==============================
+
+    // Message from the server, whatever key it used.
+    function serverMessage(data, fallback) {
+        if (!data) return fallback;
+        return data.error || data.detail || data.message || fallback;
+    }
+
+    // Safely read a JSON body (a server error page would otherwise throw).
+    async function readJson(response) {
+        try {
+            return await response.json();
+        } catch (error) {
+            return null;
+        }
+    }
+
+    // Accept the common names for the tokens.
+    function pickTokens(data) {
+        return {
+            access: data && (data.access || data.access_token || data.token),
+            refresh: data && (data.refresh || data.refresh_token)
+        };
+    }
+
+    function setBusy(button, busy, busyText) {
+        if (!button) return;
+
+        if (busy) {
+            button.dataset.label = button.textContent;
+            button.textContent = busyText;
+            button.disabled = true;
+        } else {
+            button.textContent = button.dataset.label || button.textContent;
+            button.disabled = false;
+        }
+    }
 
     // ==============================
     // LOGIN TAB
@@ -57,45 +91,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         card.addEventListener("click", () => {
 
-            roleCards.forEach(c =>
-                c.classList.remove("active")
-            );
-
+            roleCards.forEach(c => c.classList.remove("active"));
             card.classList.add("active");
 
-            selectedRole =
-                card.dataset.role;
+            selectedRole = card.dataset.role;
 
-            if(selectedRole === "student"){
+            if (selectedRole === "student") {
 
-                tabContainer.style.display =
-                    "flex";
+                tabContainer.style.display = "flex";
 
-                adminForm.style.display =
-                    "none";
-
-                registerForm.style.display =
-                    "none";
-
-                loginForm.style.display =
-                    "block";
+                adminForm.style.display = "none";
+                registerForm.style.display = "none";
+                loginForm.style.display = "block";
 
                 loginTab.classList.add("active");
                 registerTab.classList.remove("active");
-            }
-            else{
 
-                tabContainer.style.display =
-                    "none";
+            } else {
 
-                loginForm.style.display =
-                    "none";
+                tabContainer.style.display = "none";
 
-                registerForm.style.display =
-                    "none";
-
-                adminForm.style.display =
-                    "block";
+                loginForm.style.display = "none";
+                registerForm.style.display = "none";
+                adminForm.style.display = "block";
             }
         });
     });
@@ -104,262 +122,186 @@ document.addEventListener("DOMContentLoaded", () => {
     // STUDENT REGISTRATION
     // ==============================
 
-    registerForm.addEventListener(
-        "submit",
-        async (e) => {
-
-            e.preventDefault();
-
-            const name =
-                document.getElementById(
-                    "fullName"
-                ).value.trim();
-
-            const email =
-                document.getElementById(
-                    "registerEmail"
-                ).value.trim();
-
-            const password =
-                document.getElementById(
-                    "registerPassword"
-                ).value;
-
-            const confirmPassword =
-                document.getElementById(
-                    "confirmPassword"
-                ).value;
-
-            if(password !== confirmPassword){
-
-                alert(
-                    "Passwords do not match"
-                );
-
-                return;
-            }
-
-            try{
-
-                const response =
-                    await fetch(
-                        "http://127.0.0.1:8000/api/auth/register/",
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type":
-                                "application/json"
-                            },
-                            body: JSON.stringify({
-                                name,
-                                email,
-                                password
-                            })
-                        }
-                    );
-
-                const data =
-                    await response.json();
-
-                if(response.ok){
-
-                    alert(
-                        "Registration Successful"
-                    );
-
-                    registerForm.reset();
-
-                    // Switch to Login Form
-
-                    loginTab.click();
-                }
-                else{
-
-                    alert(
-                        data.error ||
-                        "Registration Failed"
-                    );
-                }
-
-            }
-            catch(error){
-
-                console.error(error);
-
-                alert(
-                    "Unable to connect to server"
-                );
-            }
-        }
-    );
-
-    // ==============================
-    // STUDENT LOGIN
-    // ==============================
-
-    loginForm.addEventListener(
-        "submit",
-        async (e) => {
-
-            e.preventDefault();
-
-            const email =
-                document.getElementById(
-                    "loginEmail"
-                ).value.trim();
-
-            const password =
-                document.getElementById(
-                    "loginPassword"
-                ).value;
-
-            try{
-
-                const response =
-                    await fetch(
-                        "http://127.0.0.1:8000/api/auth/login/",
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type":
-                                "application/json"
-                            },
-                            body: JSON.stringify({
-                                email,
-                                password
-                            })
-                        }
-                    );
-
-                const data =
-                    await response.json();
-
-                if(response.ok){
-
-                    localStorage.setItem(
-                        "access_token",
-                        data.access
-                    );
-
-                    localStorage.setItem(
-                        "refresh_token",
-                        data.refresh
-                    );
-
-                    localStorage.setItem(
-                        "student_name",
-                        data.name
-                    );
-
-                    localStorage.setItem(
-                        "student_email",
-                        data.email
-                    );
-
-                    alert(
-                        "Login Successful"
-                    );
-
-                    window.location.href =
-                        "student-dashboard.html";
-                }
-                else{
-
-                    alert(
-                        data.error ||
-                        "Invalid Credentials"
-                    );
-                }
-
-            }
-            catch(error){
-
-                console.error(error);
-
-                alert(
-                    "Unable to connect to server"
-                );
-            }
-        }
-    );
-
-    // =================================
-// ADMIN LOGIN
-// =================================
-
-adminForm.addEventListener(
-    "submit",
-    async (e) => {
+    registerForm.addEventListener("submit", async (e) => {
 
         e.preventDefault();
 
-        const identifier =
-            document.getElementById(
-                "adminIdentifier"
-            ).value.trim();
+        const name = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("registerEmail").value.trim();
+        const password = document.getElementById("registerPassword").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
 
-        const password =
-            document.getElementById(
-                "adminPassword"
-            ).value;
+        if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+        }
+
+        const button = document.getElementById("registerBtn");
+        setBusy(button, true, "Creating account...");
 
         try {
 
-            const response =
-                await fetch(
-                    "http://127.0.0.1:8000/api/auth/admin/login/",
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type":
-                            "application/json"
-                        },
-                        body: JSON.stringify({
-                            identifier,
-                            password
-                        })
-                    }
-                );
+            const response = await fetch(`${API}/register/`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, password })
+            });
 
-            const data =
-                await response.json();
+            const data = await readJson(response);
 
-            if(response.ok){
+            if (response.ok) {
 
-                localStorage.setItem(
-                    "admin_token",
-                    data.access
-                );
+                alert("Registration Successful. Please log in.");
 
-                localStorage.setItem(
-                    "admin_name",
-                    data.username
-                );
+                registerForm.reset();
 
-                alert(
-                    "Admin Login Successful"
-                );
+                // Switch to the login form
+                loginTab.click();
 
-                window.location.href =
-                    "admin-dashboard.html";
-            }
-            else{
-
-                alert(
-                    data.error ||
-                    "Invalid Admin Credentials"
-                );
+            } else {
+                alert(serverMessage(data, "Registration Failed"));
             }
 
-        }
-        catch(error){
+        } catch (error) {
 
             console.error(error);
+            alert("Unable to connect to server");
 
-            alert(
-                "Unable to connect to server"
-            );
+        } finally {
+            setBusy(button, false);
         }
-    }
-);
+    });
+
+    // ==============================
+    // STUDENT LOGIN  ->  STUDENT DASHBOARD
+    // ==============================
+
+    loginForm.addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        const email = document.getElementById("loginEmail").value.trim();
+        const password = document.getElementById("loginPassword").value;
+
+        const button = document.getElementById("loginBtn");
+        setBusy(button, true, "Logging in...");
+
+        try {
+
+            const response = await fetch(`${API}/login/`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await readJson(response);
+
+            if (!response.ok) {
+                alert(serverMessage(data, "Invalid Credentials"));
+                return;
+            }
+
+            const { access, refresh } = pickTokens(data);
+
+            // A "successful" response without a token would send the student to
+            // the dashboard, which would immediately bounce them back to login.
+            if (!access) {
+                console.error("Login response had no access token:", data);
+                alert("Login succeeded but the server did not return a token. Please contact support.");
+                return;
+            }
+
+            // Clear anything left over from an admin session, then save the student's.
+            ["admin_token", "admin_name"].forEach(key => localStorage.removeItem(key));
+
+            localStorage.setItem("access_token", access);
+
+            if (refresh) {
+                localStorage.setItem("refresh_token", refresh);
+            }
+
+            const studentName =
+                data.name ||
+                (data.student && data.student.name) ||
+                email.split("@")[0];
+
+            localStorage.setItem("student_name", studentName);
+            localStorage.setItem("student_email", data.email || email);
+
+            // replace() so the Back button does not return to the login page.
+            window.location.replace(STUDENT_DASHBOARD);
+
+        } catch (error) {
+
+            console.error(error);
+            alert("Unable to connect to server");
+
+        } finally {
+            // Harmless if the page is already navigating away.
+            setBusy(button, false);
+        }
+    });
+
+    // ==============================
+    // ADMIN LOGIN  ->  ADMIN DASHBOARD
+    // ==============================
+
+    adminForm.addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        const identifier = document.getElementById("adminIdentifier").value.trim();
+        const password = document.getElementById("adminPassword").value;
+
+        const button = adminForm.querySelector("button[type='submit']");
+        setBusy(button, true, "Logging in...");
+
+        try {
+
+            const response = await fetch(`${API}/admin/login/`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ identifier, password })
+            });
+
+            const data = await readJson(response);
+
+            if (!response.ok) {
+                alert(serverMessage(data, "Invalid Admin Credentials"));
+                return;
+            }
+
+            const { access, refresh } = pickTokens(data);
+
+            if (!access) {
+                console.error("Admin login response had no access token:", data);
+                alert("Login succeeded but the server did not return a token.");
+                return;
+            }
+
+            // Clear any student session first.
+            ["student_name", "student_email"].forEach(key => localStorage.removeItem(key));
+
+            // access_token is what the API calls use; admin_token is kept for
+            // the older admin pages that still read it.
+            localStorage.setItem("access_token", access);
+            localStorage.setItem("admin_token", access);
+
+            if (refresh) {
+                localStorage.setItem("refresh_token", refresh);
+            }
+
+            localStorage.setItem("admin_name", data.username || identifier);
+
+            window.location.replace(ADMIN_DASHBOARD);
+
+        } catch (error) {
+
+            console.error(error);
+            alert("Unable to connect to server");
+
+        } finally {
+            setBusy(button, false);
+        }
+    });
 });

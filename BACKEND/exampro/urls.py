@@ -9,6 +9,8 @@ urlpatterns = [
         admin.site.urls,
     ),
 
+    path("api/contact/", include("contact.urls")),
+
     # Authentication
     path(
         "api/auth/",

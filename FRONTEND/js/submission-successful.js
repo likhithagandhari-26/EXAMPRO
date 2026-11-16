@@ -355,7 +355,7 @@ function setupButtons() {
             "click",
             () => {
                 window.location.href =
-                    "results.html";
+                    "student-results.html";
             }
         );
     }

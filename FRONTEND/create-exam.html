@@ -36,12 +36,7 @@
                                 </a>
                             </li>
 
-                            <li>
-                                <a href="admin-students.html">
-                                    <i class="fa-solid fa-users"></i>
-                                    <span>Students</span>
-                                </a>
-                            </li>
+                            
 
                             <li class="active">
                                 <a href="admin-exams.html">
@@ -64,54 +59,10 @@
                                 </a>
                             </li>
 
-                            <li>
-                                <a href="admin-question-bank.html">
-                                    <i class="fa-solid fa-book"></i>
-                                    <span>Question Bank</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="admin-schedule.html">
-                                    <i class="fa-solid fa-calendar-days"></i>
-                                    <span>Schedule</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="admin-monitoring.html">
-                                    <i class="fa-solid fa-video"></i>
-                                    <span>Live Monitoring</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="admin-results.html">
-                                    <i class="fa-solid fa-chart-line"></i>
-                                    <span>Results</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="admin-analytics.html">
-                                    <i class="fa-solid fa-chart-pie"></i>
-                                    <span>Analytics</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="admin-reports.html">
-                                    <i class="fa-solid fa-file-pdf"></i>
-                                    <span>Reports</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="admin-settings.html">
-                                    <i class="fa-solid fa-gear"></i>
-                                    <span>Settings</span>
-                                </a>
-                            </li>
+                           
+                            
+                           
+                        
                         </ul>
                     </nav>
 
@@ -129,7 +80,7 @@
                 </div>
 
                 <div class="sidebar-footer">
-                    <a href="#" id="logoutBtn">
+                    <a href="auth333.html">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span>Logout</span>
                     </a>
@@ -214,6 +165,11 @@
                             <label>Exam Date</label>
                             <input type="date" id="examDate" />
                         </div>
+
+                        <div class="form-group">
+                            <label>Start Time</label>
+                            <input type="time" id="examTime" />
+                        </div>
                     </div>
 
                     <!-- OPTIONAL SETTINGS -->
@@ -281,27 +237,27 @@
 
                     <div class="settings-grid">
                         <label class="setting-item">
-                            <input type="checkbox" />
+                            <input type="checkbox" id="negativeMarking" />
                             Negative Marking
                         </label>
 
                         <label class="setting-item">
-                            <input type="checkbox" />
+                            <input type="checkbox" id="shuffleQuestions" />
                             Shuffle Questions
                         </label>
 
                         <label class="setting-item">
-                            <input type="checkbox" />
+                            <input type="checkbox" id="shuffleOptions" />
                             Shuffle Options
                         </label>
 
                         <label class="setting-item">
-                            <input type="checkbox" />
+                            <input type="checkbox" id="showResults" checked />
                             Show Results
                         </label>
 
                         <label class="setting-item">
-                            <input type="checkbox" checked />
+                            <input type="checkbox" id="aiProctoring" checked />
                             AI Proctoring
                         </label>
                     </div>
@@ -323,5 +279,3 @@
         <script src="js/create-exam.js"></script>
     </body>
 </html>
-
-

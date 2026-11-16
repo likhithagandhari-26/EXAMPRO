@@ -80,6 +80,8 @@
     align-items:center;
 
     font-size:15px;
+
+    flex-shrink:0;
 }
 
 .card-header h3{
@@ -95,6 +97,10 @@
 /* ====================================
    FORM
 ==================================== */
+
+#contactForm{
+    position:relative;   /* keeps the hidden honeypot inside the form */
+}
 
 .form-row{
     display:grid;
@@ -116,12 +122,26 @@
     align-items:center;
 
     margin-bottom:10px;
+
+    background:#fff;
+
+    transition:border-color .2s, box-shadow .2s;
+}
+
+/* highlight the field while typing */
+.input-group:focus-within{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.12);
 }
 
 .input-group i{
     color:#64748b;
     margin-right:8px;
     font-size:13px;
+}
+
+.input-group:focus-within i{
+    color:#2563eb;
 }
 
 .input-group input{
@@ -131,7 +151,14 @@
     outline:none;
 
     font-size:13px;
+    font-family:'Poppins',sans-serif;
+    color:#0f172a;
     background:transparent;
+}
+
+.input-group input::placeholder,
+.textarea-group textarea::placeholder{
+    color:#94a3b8;
 }
 
 .textarea-group{
@@ -150,6 +177,58 @@
 
     font-size:13px;
     font-family:'Poppins',sans-serif;
+    color:#0f172a;
+    background:transparent;
+}
+
+/* ====================================
+   SUBMIT BUTTON (extra states)
+   base .primary-btn style stays in style.css
+==================================== */
+
+.primary-btn{
+    cursor:pointer;
+}
+
+.primary-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+/* ====================================
+   STATUS MESSAGE (success / error)
+==================================== */
+
+.form-status{
+    margin-top:12px;
+    min-height:18px;
+
+    font-size:13px;
+    font-weight:500;
+    line-height:1.4;
+}
+
+.form-status.success{
+    color:#16a34a;
+}
+
+.form-status.error{
+    color:#dc2626;
+}
+
+/* ====================================
+   HONEYPOT (hidden spam trap)
+==================================== */
+
+.hp-field{
+    position:absolute;
+    left:-9999px;
+
+    width:1px;
+    height:1px;
+
+    opacity:0;
+    pointer-events:none;
 }
 
 /* ====================================
@@ -202,8 +281,6 @@
     line-height:1.4;
 }
 
-
-
 /* ====================================
    RESPONSIVE
 ==================================== */
@@ -213,15 +290,6 @@
     .contact-section{
         grid-template-columns:1fr;
     }
-
-    .quick-contact{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .cta-section{
-        flex-direction:column;
-        text-align:center;
-    }
 }
 
 @media(max-width:768px){
@@ -229,9 +297,4 @@
     .form-row{
         grid-template-columns:1fr;
     }
-
-    .quick-contact{
-        grid-template-columns:1fr;
-    }
 }
-

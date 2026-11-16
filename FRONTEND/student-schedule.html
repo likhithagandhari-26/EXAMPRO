@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule | Exam Pro</title>
+
+    <link rel="stylesheet" href="css/commondashboard-design.css">
+    <link rel="stylesheet" href="css/student-schedule.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div>
+            <div class="logo">
+                <h1>EXAM PRO</h1>
+                <p>Secure • Smart • Reliable</p>
+            </div>
+
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="student-dashboard.html"><i class="fa-solid fa-table-columns"></i><span>Dashboard</span></a></li>
+                    <li><a href="student-exams.html"><i class="fa-solid fa-laptop"></i><span>Exams</span></a></li>
+                    <li><a href="student-results.html"><i class="fa-solid fa-chart-line"></i><span>Results</span></a></li>
+                    <li><a href="student-history.html"><i class="fa-solid fa-clock-rotate-left"></i><span>History</span></a></li>
+                    <li class="active"><a href="student-schedule.html" aria-current="page"><i class="fa-solid fa-calendar-days"></i><span>Schedule</span></a></li>
+                    
+                </ul>
+            </nav>
+
+            <div class="ai-card">
+                <div class="ai-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Exam Security</h3>
+                <p>AI-powered proctoring helps ensure fair and secure examinations.</p>
+                <a href="#">Security Details →</a>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <button class="menu-btn" id="menuToggle" type="button" aria-label="Toggle sidebar">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="top-right">
+                <div class="notification" id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span id="notificationCount">0</span>
+
+                    <div class="notification-dropdown" id="notificationDropdown">
+                        <h4>Notifications</h4>
+                        <ul id="notificationList">
+                            <li>No new notifications</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="profile" id="profileBtn">
+                    <div class="profile-avatar">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+
+                    <div class="profile-info">
+                        <h4 id="studentName">Student</h4>
+                        <p id="studentRole">Student Account</p>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <a href="student-profile.html"><i class="fa-regular fa-user"></i> My Profile</a>
+                        <a href="student-results.html"><i class="fa-solid fa-chart-line"></i> My Results</a>
+                        <hr>
+                        <a href="#" id="logoutDropdownBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- SCHEDULE PAGE -->
+        <section class="schedule-page">
+
+            <!-- HEADER -->
+            <div class="schedule-header">
+                <div>
+                    <span class="page-eyebrow">STUDENT SCHEDULE</span>
+                    <h1>Exam Schedule</h1>
+                    <p>Keep track of your upcoming and completed exams</p>
+                </div>
+
+                <div class="schedule-date">
+                    <i class="fa-solid fa-calendar-day"></i>
+                    <div>
+                        <span>TODAY</span>
+                        <strong id="todayDate">--</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUMMARY CARDS -->
+            <div class="schedule-stats">
+
+                <div class="schedule-stat">
+                    <div class="schedule-stat-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
+                    <div>
+                        <span>Upcoming</span>
+                        <h2 id="upcomingCount">0</h2>
+                        <p>Scheduled exams</p>
+                    </div>
+                </div>
+
+                <div class="schedule-stat">
+                    <div class="schedule-stat-icon green"><i class="fa-solid fa-check-double"></i></div>
+                    <div>
+                        <span>Completed</span>
+                        <h2 id="completedCount">0</h2>
+                        <p>Exams completed</p>
+                    </div>
+                </div>
+
+                <div class="schedule-stat">
+                    <div class="schedule-stat-icon purple"><i class="fa-solid fa-calendar-week"></i></div>
+                    <div>
+                        <span>This Month</span>
+                        <h2 id="monthCount">0</h2>
+                        <p>Exams scheduled</p>
+                    </div>
+                </div>
+
+                <div class="schedule-stat">
+                    <div class="schedule-stat-icon orange"><i class="fa-solid fa-calendar-xmark"></i></div>
+                    <div>
+                        <span>Missed</span>
+                        <h2 id="missedCount">0</h2>
+                        <p>Date passed, not attempted</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CALENDAR + RIGHT COLUMN -->
+            <div class="schedule-main-grid">
+
+                <section class="schedule-panel calendar-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="panel-label">CALENDAR</span>
+                            <h2>Exam Calendar</h2>
+                            <p>Your examination calendar</p>
+                        </div>
+
+                        <div class="calendar-navigation">
+                            <button type="button" id="prevMonth" aria-label="Previous month">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button type="button" id="todayBtn" class="today-button">Today</button>
+                            <button type="button" id="nextMonth" aria-label="Next month">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="calendar-month">
+                        <h3 id="calendarMonth">—</h3>
+                    </div>
+
+                    <div class="calendar-weekdays">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span>
+                        <span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+
+                    <div class="calendar-days" id="calendarDays"></div>
+
+                    <div class="calendar-legend">
+                        <div><span class="legend upcoming"></span> Upcoming</div>
+                        <div><span class="legend today"></span> Today</div>
+                        <div><span class="legend completed"></span> Completed</div>
+                    </div>
+
+                </section>
+
+                <div class="schedule-right-column">
+
+                    <!-- NEXT EXAM -->
+                    <section class="schedule-panel next-exam-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <span class="panel-label">NEXT EXAM</span>
+                                <h2 id="nextExamTitle">Loading...</h2>
+                                <p id="nextExamSubject">--</p>
+                            </div>
+
+                            <div class="next-exam-icon"><i class="fa-solid fa-clock"></i></div>
+                        </div>
+
+                        <div class="next-exam-details">
+                            <div class="detail-row">
+                                <i class="fa-solid fa-calendar"></i>
+                                <div><span>Date</span><strong id="nextExamDate">--</strong></div>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fa-solid fa-clock"></i>
+                                <div><span>Time</span><strong id="nextExamTime">--</strong></div>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fa-solid fa-hourglass-half"></i>
+                                <div><span>Duration</span><strong id="nextExamDuration">--</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="countdown-section">
+                            <span>Starts in</span>
+                            <strong id="nextExamCountdown">--</strong>
+                        </div>
+
+                        <a class="schedule-primary-btn" id="nextExamBtn" href="student-exams.html">
+                            Go to Exams <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </section>
+
+                    <!-- UPCOMING LIST -->
+                    <section class="schedule-panel upcoming-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <span class="panel-label">UPCOMING</span>
+                                <h2>Upcoming Exams</h2>
+                            </div>
+                            <a href="student-exams.html">View all</a>
+                        </div>
+
+                        <div class="upcoming-list" id="upcomingList"></div>
+
+                    </section>
+
+                </div>
+            </div>
+
+            <!-- TIMELINE -->
+            <section class="schedule-panel timeline-panel">
+
+                <div class="panel-heading timeline-heading">
+                    <div>
+                        <span class="panel-label">EXAM TIMELINE</span>
+                        <h2>Your Schedule</h2>
+                    </div>
+
+                    <select id="statusFilter" aria-label="Filter exams">
+                        <option value="all">All Exams</option>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="completed">Completed</option>
+                        <option value="missed">Missed</option>
+                    </select>
+                </div>
+
+                <div class="timeline" id="scheduleTimeline"></div>
+
+            </section>
+
+        </section>
+    </main>
+</div>
+
+<!-- EXAM DETAILS MODAL -->
+<div class="schedule-modal" id="examModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+
+        <button type="button" class="modal-close" id="modalClose" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-icon"><i class="fa-solid fa-file-pen"></i></div>
+
+        <span class="modal-label">EXAM DETAILS</span>
+        <h2 id="modalTitle">Exam</h2>
+        <p class="modal-subject" id="modalSubject">--</p>
+
+        <div class="modal-info-grid">
+            <div>
+                <i class="fa-solid fa-calendar"></i>
+                <div><span>Date</span><strong id="modalDate">--</strong></div>
+            </div>
+            <div>
+                <i class="fa-solid fa-clock"></i>
+                <div><span>Time</span><strong id="modalTime">--</strong></div>
+            </div>
+            <div>
+                <i class="fa-solid fa-hourglass-half"></i>
+                <div><span>Duration</span><strong id="modalDuration">--</strong></div>
+            </div>
+            <div>
+                <i class="fa-solid fa-stopwatch"></i>
+                <div><span>Status</span><strong id="modalCountdown">--</strong></div>
+            </div>
+        </div>
+
+        <button type="button" class="schedule-primary-btn modal-button" id="modalAction"
+                style="width:100%;border:0;cursor:pointer;font-family:inherit;">
+            View Exam <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+    </div>
+</div>
+
+<script src="js/student-schedule.js"></script>
+</body>
+</html>

@@ -75,33 +75,7 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="student-profile.html">
-                            <i class="fa-solid fa-user-graduate"></i>
-                            <span>Profile</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="student-notifications.html">
-                            <i class="fa-solid fa-bell"></i>
-                            <span>Notifications</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="help-center.html">
-                            <i class="fa-solid fa-circle-question"></i>
-                            <span>Help Center</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="settings.html">
-                            <i class="fa-solid fa-gear"></i>
-                            <span>Settings</span>
-                        </a>
-                    </li>
+                    
 
                 </ul>
             </nav>
@@ -240,19 +214,23 @@
 
             <div class="filter-buttons">
 
-                <button class="active">
+                <button class="active" type="button" data-filter="all">
                     All
                 </button>
 
-                <button>
+                <button type="button" data-filter="available">
                     Available
                 </button>
 
-                <button>
+                <button type="button" data-filter="upcoming">
                     Upcoming
                 </button>
 
-                <button>
+                <button type="button" data-filter="pending">
+                    Pending
+                </button>
+
+                <button type="button" data-filter="completed">
                     Completed
                 </button>
 
